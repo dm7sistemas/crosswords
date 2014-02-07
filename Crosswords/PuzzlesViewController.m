@@ -71,8 +71,6 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSLog(@"prepareForSegue: %@ sender: %@", segue, sender);
-    
     CluesViewController* cluesController = segue.destinationViewController;
     
     cluesController.puzzle = self.selectedPuzzle;

@@ -70,10 +70,6 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
                                                       userInfo:clue];
 }
 
--(void)_handleLongTap:(UITapGestureRecognizer*) recognizer {
-    NSLog(@"recognizer: %@", recognizer);
-}
-
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
