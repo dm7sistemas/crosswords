@@ -30,9 +30,9 @@
 		A56CAB7918A4121200E66E4D /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB7818A4121200E66E4D /* GridView.m */; };
 		A56CAB7B18A41C6600E66E4D /* PuzzleHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB7A18A41C6600E66E4D /* PuzzleHelperTests.m */; };
 		A56CAB7C18A41C7C00E66E4D /* crossword1.json in Resources */ = {isa = PBXBuildFile; fileRef = A50A73A4189E08DD0089111F /* crossword1.json */; };
-		A56CAB8D18A4635000E66E4D /* MPWAbstractCGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8118A4635000E66E4D /* MPWAbstractCGContext.m */; };
-		A56CAB8E18A4635000E66E4D /* MPWCGDrawingContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8318A4635000E66E4D /* MPWCGDrawingContext.m */; };
-		A56CAB8F18A4635000E66E4D /* MPWView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8618A4635000E66E4D /* MPWView.m */; };
+		A56CAB8D18A4635000E66E4D /* MPWAbstractCGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8118A4635000E66E4D /* MPWAbstractCGContext.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A56CAB8E18A4635000E66E4D /* MPWCGDrawingContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8318A4635000E66E4D /* MPWCGDrawingContext.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A56CAB8F18A4635000E66E4D /* MPWView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8618A4635000E66E4D /* MPWView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A56CAB9018A4635000E66E4D /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8C18A4635000E66E4D /* GTMNSString+HTML.m */; };
 /* End PBXBuildFile section */
 
@@ -341,7 +341,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A56CAB8D18A4635000E66E4D /* MPWAbstractCGContext.m in Sources */,
 				A50A737D189E08C70089111F /* AppDelegate.m in Sources */,
 				A56CAB7318A3FD9800E66E4D /* PuzzleHelper.m in Sources */,
 				A50A7383189E08C70089111F /* MasterViewController.m in Sources */,
@@ -350,6 +349,7 @@
 				A50A7386189E08C70089111F /* DetailViewController.m in Sources */,
 				A56CAB9018A4635000E66E4D /* GTMNSString+HTML.m in Sources */,
 				A56CAB8F18A4635000E66E4D /* MPWView.m in Sources */,
+				A56CAB8D18A4635000E66E4D /* MPWAbstractCGContext.m in Sources */,
 				A56CAB8E18A4635000E66E4D /* MPWCGDrawingContext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
