@@ -34,6 +34,8 @@
 		A5A93E8D18A51C920083CF15 /* crossword3.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8818A51C920083CF15 /* crossword3.json */; };
 		A5A93E8E18A51C920083CF15 /* crossword4.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8918A51C920083CF15 /* crossword4.json */; };
 		A5A93E8F18A51C920083CF15 /* crossword5.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8A18A51C920083CF15 /* crossword5.json */; };
+		A5A93EDE18A537DB0083CF15 /* CluesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A93EDD18A537DB0083CF15 /* CluesViewController.m */; };
+		A5A93EE318A56CB00083CF15 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5A93EE218A56CB00083CF15 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,9 @@
 		A5A93E8818A51C920083CF15 /* crossword3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword3.json; sourceTree = "<group>"; };
 		A5A93E8918A51C920083CF15 /* crossword4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword4.json; sourceTree = "<group>"; };
 		A5A93E8A18A51C920083CF15 /* crossword5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword5.json; sourceTree = "<group>"; };
+		A5A93EDC18A537DB0083CF15 /* CluesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CluesViewController.h; sourceTree = "<group>"; };
+		A5A93EDD18A537DB0083CF15 /* CluesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CluesViewController.m; sourceTree = "<group>"; };
+		A5A93EE218A56CB00083CF15 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +164,8 @@
 				A50A737E189E08C70089111F /* Main.storyboard */,
 				A50A7381189E08C70089111F /* PuzzlesViewController.h */,
 				A50A7382189E08C70089111F /* PuzzlesViewController.m */,
+				A5A93EDC18A537DB0083CF15 /* CluesViewController.h */,
+				A5A93EDD18A537DB0083CF15 /* CluesViewController.m */,
 				A50A7384189E08C70089111F /* DetailViewController.h */,
 				A50A7385189E08C70089111F /* DetailViewController.m */,
 				A56CAB7718A4121200E66E4D /* GridView.h */,
@@ -176,6 +183,7 @@
 			children = (
 				A50A7374189E08C70089111F /* Crosswords-Info.plist */,
 				A50A7375189E08C70089111F /* InfoPlist.strings */,
+				A5A93EE218A56CB00083CF15 /* Localizable.strings */,
 				A50A7378189E08C70089111F /* main.m */,
 				A50A737A189E08C70089111F /* Crosswords-Prefix.pch */,
 			);
@@ -330,6 +338,7 @@
 				A5A93E8F18A51C920083CF15 /* crossword5.json in Resources */,
 				A5A93E8D18A51C920083CF15 /* crossword3.json in Resources */,
 				A5A93E8E18A51C920083CF15 /* crossword4.json in Resources */,
+				A5A93EE318A56CB00083CF15 /* Localizable.strings in Resources */,
 				A50A7377189E08C70089111F /* InfoPlist.strings in Resources */,
 				A5A93E8B18A51C920083CF15 /* crossword1.json in Resources */,
 				A50A7380189E08C70089111F /* Main.storyboard in Resources */,
@@ -354,6 +363,7 @@
 				A50A737D189E08C70089111F /* AppDelegate.m in Sources */,
 				A56CAB7318A3FD9800E66E4D /* PuzzleHelper.m in Sources */,
 				A50A7383189E08C70089111F /* PuzzlesViewController.m in Sources */,
+				A5A93EDE18A537DB0083CF15 /* CluesViewController.m in Sources */,
 				A50A7379189E08C70089111F /* main.m in Sources */,
 				A56CAB7918A4121200E66E4D /* GridView.m in Sources */,
 				A50A7386189E08C70089111F /* DetailViewController.m in Sources */,

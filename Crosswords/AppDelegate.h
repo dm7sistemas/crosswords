@@ -11,7 +11,6 @@
 
 extern NSMutableDictionary* gPublishers;
 extern NSMutableDictionary* gAuthors;
-extern NSMutableDictionary* gPuzzles;
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

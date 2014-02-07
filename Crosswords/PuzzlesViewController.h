@@ -12,6 +12,18 @@
 
 @interface PuzzlesViewController : UITableViewController
 
-@property (strong, nonatomic) DetailViewController *detailViewController;
+@property (strong, nonatomic) DetailViewController* detailViewController;
+@property (strong, nonatomic) NSDictionary* puzzles;
 
 @end
+
+
+@interface PuzzlesByPublisherViewController : PuzzlesViewController
+
+@end
+
+
+@interface PuzzlesByAuthorViewController : PuzzlesViewController
+
+@end
+

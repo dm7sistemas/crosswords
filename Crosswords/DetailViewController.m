@@ -7,24 +7,25 @@
 //
 
 #import "DetailViewController.h"
+#import "GridView.h"
 #import "PuzzleHelper.h"
+
 
 @interface DetailViewController ()
 
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
-@property (strong, nonatomic) PuzzleHelper* helper;
 
 @end
 
 @implementation DetailViewController
 
+@synthesize puzzle = mPuzzle;
+
 #pragma mark - Managing the detail item
 
-- (void)setCrossword:(id)newCrossword
-{
-    if (_crossword != newCrossword) {
-        _crossword = newCrossword;
-        _helper = [[PuzzleHelper alloc] initWithPuzzle:newCrossword];
+- (void)setPuzzle:(PuzzleHelper*)newPuzzle {
+    if (mPuzzle != newPuzzle) {
+        mPuzzle = newPuzzle;
         
         // Update the view.
         [self configureView];
@@ -35,12 +36,11 @@
     }        
 }
 
-- (void)configureView
-{
+- (void)configureView {
     // Update the user interface for the detail item.
 
-    if (self.crossword) {
-        NSDictionary* puzzle = self.crossword;
+    if (self.puzzle) {
+        NSDictionary* puzzle = self.puzzle.puzzle;
         NSString* editor = puzzle[@"editor"];
         NSString* author = puzzle[@"author"];
         NSString* copyright = puzzle[@"copyright"];
@@ -55,28 +55,29 @@
         self.authorView.text = editor ? [NSString stringWithFormat:@"%@ (Editor: %@)", author, editor] : author;
         self.navigationItem.title = puzzle[@"title"];
         self.copyrightView.text = copyright ? [NSString stringWithFormat:@"%C %@", (UniChar) 0x00A9 /* Unicode copyright symbol */, copyright] : @"";
-        self.gridView.puzzle = self.helper;
+        self.gridView.puzzle = self.puzzle;
+        self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"Clues", @"Puzzle Clues");
+    }
+    else {
+        self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"Puzzles", @"Crossword Puzzles");        
     }
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Split view
 
-- (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
-{
-    barButtonItem.title = NSLocalizedString(@"Puzzles", @"Crossword puzzles");
+- (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController {
+    barButtonItem.title = self.puzzle ? NSLocalizedString(@"Clues", @"Puzzle Clues") : NSLocalizedString(@"Puzzles", @"Crossword Puzzles");
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
     self.masterPopoverController = popoverController;
 }

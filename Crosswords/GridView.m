@@ -7,10 +7,12 @@
 //
 
 #import "GridView.h"
+#import "CluesViewController.h"
+
+
+NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChangedNotification";
 
 @interface GridView ()
-
-@property (strong, nonatomic) NSDictionary* selectedClue;
 
 @end
 
@@ -19,6 +21,15 @@
 
 @synthesize puzzle = mPuzzle;
 @synthesize selectedClue = mSelectedClue;
+
+-(void)_cluesTableSelectionChanged:(NSNotification*) notification {
+    CluesViewController* cluesViewController = notification.object;
+    NSDictionary* clue = notification.userInfo;
+
+    if (cluesViewController.puzzle == self.puzzle) {
+        self.selectedClue = clue;
+    }
+}
 
 -(void)_getRow:(NSInteger*) row andColumn:(NSInteger*) column at:(CGPoint) where {
     NSParameterAssert(row);
@@ -52,19 +63,29 @@
     [self _getRow:&row andColumn:&col at:where];
     
     NSDictionary* clue = [self.puzzle bestClueForRow:row column:col];
-    NSLog(@"recognizer: %@, where: %@, row: %d, column: %d, best clue: %@", recognizer, NSStringFromCGPoint(where), (int)row, (int)col, clue);
     
     self.selectedClue = clue;
+    [[NSNotificationCenter defaultCenter] postNotificationName:GridViewSelectedClueChangedNotification
+                                                        object:self
+                                                      userInfo:clue];
 }
 
 -(void)_handleLongTap:(UITapGestureRecognizer*) recognizer {
     NSLog(@"recognizer: %@", recognizer);
 }
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)awakeFromNib {
-    UITapGestureRecognizer *singleFingerTap =
-    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_handleSingleTap:)];
-    [self addGestureRecognizer:singleFingerTap];
+    UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_handleSingleTap:)];
+    [self addGestureRecognizer:tapRecognizer];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(_cluesTableSelectionChanged:)
+                                                 name:DetailViewControllerSelectedClueChangedNotification
+                                               object:nil];
 }
 
 -(void)setPuzzle:(PuzzleHelper *)puzzle {
@@ -154,13 +175,27 @@
                     [context setFillColor:clueColor];
                     [context setTextPosition:NSMakePoint(cellsLeft + col * cellSize + 1.0,
                                                          cellsTop + cellsHeight - (row * cellSize + 9.0))];
-#if 1
-                    [context show:[NSString stringWithFormat:@"%d", (int) num]];
-#else
-                    NSDictionary* answer = [weakSelf.puzzle cluesAtRow:row column:col][0];
+
+                    NSArray* clues = [weakSelf.puzzle cluesAtRow:row column:col];
+                    BOOL across = NO;
+                    BOOL down = NO;
                     
-                    [context show:answer[@"clue"]];
-#endif
+                    for (NSDictionary* aClue in clues) {
+                        if ([aClue[@"across"] boolValue])
+                            across = YES;
+                        else
+                            down = YES;
+                    }
+                    
+                    [context show:[NSString stringWithFormat:@"%d%@",
+                                   (int) num,
+                                   across ? [NSString stringWithFormat:@"%C", (UniChar)0x2192] : @""]];
+                    if (down) {
+                        [context setTextPosition:NSMakePoint(cellsLeft + col * cellSize,
+                                                             cellsTop + cellsHeight - (row * cellSize + 9.0 + 10.0))];
+                        
+                        [context show:[NSString stringWithFormat:@"%C", (UniChar)0x2193]];
+                    }
                 }
             }
         };

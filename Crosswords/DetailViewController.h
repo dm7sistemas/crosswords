@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PuzzleHelper.h"
 #import "GridView.h"
+
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
 
-@property (strong, nonatomic) NSDictionary* crossword;
+@property (strong, nonatomic) PuzzleHelper* puzzle;
 
 @property (weak, nonatomic) IBOutlet UILabel *authorView;
 @property (weak, nonatomic) IBOutlet UILabel *copyrightView;

@@ -12,8 +12,6 @@
 
 NSMutableDictionary* gPublishers = nil;
 NSMutableDictionary* gAuthors = nil;
-NSMutableDictionary* gPuzzles = nil;
-
 
 
 @implementation AppDelegate
@@ -22,7 +20,6 @@ NSMutableDictionary* gPuzzles = nil;
 {
     gPublishers = [NSMutableDictionary dictionary];
     gAuthors = [NSMutableDictionary dictionary];
-    gPuzzles = [NSMutableDictionary dictionary];
     
     for (NSString* jsonPath in [[NSBundle mainBundle] pathsForResourcesOfType:@"json" inDirectory:nil]) {
         NSDictionary* puzzle = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:jsonPath]
@@ -32,7 +29,6 @@ NSMutableDictionary* gPuzzles = nil;
         if (puzzle) {
             NSString* publisher = [puzzle[@"publisher"] gtm_stringByUnescapingFromHTML];
             NSString* author = [puzzle[@"author"] gtm_stringByUnescapingFromHTML];
-            NSString* title = [puzzle[@"title"] gtm_stringByUnescapingFromHTML];
             
             if (!publisher || [publisher isEqual:[NSNull null]])
                 publisher = @"Unknown";
@@ -48,12 +44,6 @@ NSMutableDictionary* gPuzzles = nil;
                 gAuthors[author] = [NSMutableArray arrayWithObject:puzzle];
             else
                 [gAuthors[author] addObject:puzzle];
-        
-            if (!gPuzzles[title])
-                gPuzzles[title] = [NSMutableArray arrayWithObject:puzzle];
-            else
-                [gPuzzles[title] addObject:puzzle];
-
         }
     }
 

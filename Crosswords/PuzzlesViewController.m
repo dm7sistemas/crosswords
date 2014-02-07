@@ -9,91 +9,129 @@
 #import "AppDelegate.h"
 #import "PuzzlesViewController.h"
 #import "DetailViewController.h"
+#import "CluesViewController.h"
 #import "GTMNSString+HTML.h"
 
 @interface PuzzlesViewController ()
 
+@property (strong, nonatomic) PuzzleHelper* selectedPuzzle;
+@property (strong, nonatomic) NSArray* sortedSections;
 
 @end
 
 @implementation PuzzlesViewController
 
-- (void)awakeFromNib
-{
+@synthesize sortedSections = mSortedSections;
+
+- (NSArray*)sortedSections {
+    if (!mSortedSections)
+        mSortedSections = [self.puzzles.allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    return mSortedSections;
+}
+
+- (void)awakeFromNib {
     self.clearsSelectionOnViewWillAppear = NO;
     self.preferredContentSize = CGSizeMake(320.0, 600.0);
     [super awakeFromNib];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.title = NSLocalizedString(@"Puzzles", @"Crossword puzzles");
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"PuzzlesBack", @"Crossword Puzzles Back Button")
+                                                                             style:UIBarButtonItemStyleBordered
+                                                                            target:nil
+                                                                            action:nil];
+    
+#if 0
+    UISegmentedControl* control = [[UISegmentedControl alloc] initWithFrame:CGRectZero];
+    
+    [control insertSegmentWithImage:[UIImage imageNamed:@"Publisher"] atIndex:0 animated:NO];
+    [control insertSegmentWithImage:[UIImage imageNamed:@"Author"] atIndex:0 animated:NO];
+    [control insertSegmentWithImage:[UIImage imageNamed:@"Calendar"] atIndex:0 animated:NO];
+    [control sizeToFit];
+    CGSize size = self.navigationController.toolbar.frame.size;
+    CGRect frame = CGRectInset(control.frame, -30.0, -3.0);
+    
+    frame.origin.x = (size.width - CGRectGetWidth(frame)) / 2.0;
+    
+    [control setFrame:frame];
+    
+    UIBarButtonItem* barItem = [[UIBarButtonItem alloc] initWithCustomView:control];
+    
+    [self setToolbarItems:@[barItem] animated:NO];
+#endif
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table View
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return gPublishers.allKeys.count;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSLog(@"prepareForSegue: %@ sender: %@", segue, sender);
+    
+    CluesViewController* cluesController = segue.destinationViewController;
+    
+    cluesController.puzzle = self.selectedPuzzle;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [gPublishers[gPublishers.allKeys[section]] count];
+#pragma mark - Table View
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.sortedSections.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.puzzles[self.sortedSections[section]] count];
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return gPublishers.allKeys[section];
+    return self.sortedSections[section];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    NSDictionary* puzzle = gPublishers[gPublishers.allKeys[indexPath.section]][indexPath.row];
+    NSDictionary* puzzle = self.puzzles[self.sortedSections[indexPath.section]][indexPath.row];
     
     cell.textLabel.text = [puzzle[@"title"] gtm_stringByUnescapingFromHTML];
-    cell.detailTextLabel.text = [puzzle[@"author"] gtm_stringByUnescapingFromHTML];
+    
+    if (self.puzzles == gPublishers)
+        cell.detailTextLabel.text = [puzzle[@"author"] gtm_stringByUnescapingFromHTML];
+    else if (self.puzzles == gAuthors)
+        cell.detailTextLabel.text = [puzzle[@"publisher"] gtm_stringByUnescapingFromHTML];
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return NO;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary* crossword = self.puzzles[self.sortedSections[indexPath.section]][indexPath.row];
+    
+    self.selectedPuzzle = [[PuzzleHelper alloc] initWithPuzzle:crossword];
+    self.detailViewController.puzzle = self.selectedPuzzle;
+    
+    [self performSegueWithIdentifier:@"cluesSegue" sender:self];
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+@end
+
+
+@implementation PuzzlesByPublisherViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.puzzles = gPublishers;
 }
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+@end
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSDictionary* puzzle = gPublishers[gPublishers.allKeys[indexPath.section]][indexPath.row];
-    self.detailViewController.crossword = puzzle;
+@implementation PuzzlesByAuthorViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.puzzles = gAuthors;
 }
 
 @end
