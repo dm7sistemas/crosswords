@@ -22,18 +22,18 @@
 		A50A7391189E08C70089111F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50A7370189E08C70089111F /* UIKit.framework */; };
 		A50A7399189E08C70089111F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A50A7397189E08C70089111F /* InfoPlist.strings */; };
 		A50A739B189E08C70089111F /* CrosswordsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A50A739A189E08C70089111F /* CrosswordsTests.m */; };
-		A50A73A5189E08DE0089111F /* crossword1.json in Resources */ = {isa = PBXBuildFile; fileRef = A50A73A4189E08DD0089111F /* crossword1.json */; };
-		A50A73A718A0266A0089111F /* crossword2.json in Resources */ = {isa = PBXBuildFile; fileRef = A50A73A618A0266A0089111F /* crossword2.json */; };
-		A56CAB1B18A30E6900E66E4D /* crossword3.json in Resources */ = {isa = PBXBuildFile; fileRef = A56CAB1A18A30E6900E66E4D /* crossword3.json */; };
-		A56CAB7018A372F200E66E4D /* crossword4.json in Resources */ = {isa = PBXBuildFile; fileRef = A56CAB6F18A372F200E66E4D /* crossword4.json */; };
 		A56CAB7318A3FD9800E66E4D /* PuzzleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB7218A3FD9800E66E4D /* PuzzleHelper.m */; };
 		A56CAB7918A4121200E66E4D /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB7818A4121200E66E4D /* GridView.m */; };
 		A56CAB7B18A41C6600E66E4D /* PuzzleHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB7A18A41C6600E66E4D /* PuzzleHelperTests.m */; };
-		A56CAB7C18A41C7C00E66E4D /* crossword1.json in Resources */ = {isa = PBXBuildFile; fileRef = A50A73A4189E08DD0089111F /* crossword1.json */; };
 		A56CAB8D18A4635000E66E4D /* MPWAbstractCGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8118A4635000E66E4D /* MPWAbstractCGContext.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A56CAB8E18A4635000E66E4D /* MPWCGDrawingContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8318A4635000E66E4D /* MPWCGDrawingContext.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A56CAB8F18A4635000E66E4D /* MPWView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8618A4635000E66E4D /* MPWView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A56CAB9018A4635000E66E4D /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8C18A4635000E66E4D /* GTMNSString+HTML.m */; };
+		A5A93E8B18A51C920083CF15 /* crossword1.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8618A51C920083CF15 /* crossword1.json */; };
+		A5A93E8C18A51C920083CF15 /* crossword2.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8718A51C920083CF15 /* crossword2.json */; };
+		A5A93E8D18A51C920083CF15 /* crossword3.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8818A51C920083CF15 /* crossword3.json */; };
+		A5A93E8E18A51C920083CF15 /* crossword4.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8918A51C920083CF15 /* crossword4.json */; };
+		A5A93E8F18A51C920083CF15 /* crossword5.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8A18A51C920083CF15 /* crossword5.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,10 +68,6 @@
 		A50A7396189E08C70089111F /* CrosswordsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CrosswordsTests-Info.plist"; sourceTree = "<group>"; };
 		A50A7398189E08C70089111F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A50A739A189E08C70089111F /* CrosswordsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrosswordsTests.m; sourceTree = "<group>"; };
-		A50A73A4189E08DD0089111F /* crossword1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword1.json; sourceTree = "<group>"; };
-		A50A73A618A0266A0089111F /* crossword2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword2.json; sourceTree = "<group>"; };
-		A56CAB1A18A30E6900E66E4D /* crossword3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword3.json; sourceTree = "<group>"; };
-		A56CAB6F18A372F200E66E4D /* crossword4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword4.json; sourceTree = "<group>"; };
 		A56CAB7118A3FD9800E66E4D /* PuzzleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzleHelper.h; sourceTree = "<group>"; };
 		A56CAB7218A3FD9800E66E4D /* PuzzleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzleHelper.m; sourceTree = "<group>"; };
 		A56CAB7718A4121200E66E4D /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
@@ -91,6 +87,11 @@
 		A56CAB8B18A4635000E66E4D /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		A56CAB8C18A4635000E66E4D /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		A56CAB9118A463AA00E66E4D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		A5A93E8618A51C920083CF15 /* crossword1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword1.json; sourceTree = "<group>"; };
+		A5A93E8718A51C920083CF15 /* crossword2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword2.json; sourceTree = "<group>"; };
+		A5A93E8818A51C920083CF15 /* crossword3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword3.json; sourceTree = "<group>"; };
+		A5A93E8918A51C920083CF15 /* crossword4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword4.json; sourceTree = "<group>"; };
+		A5A93E8A18A51C920083CF15 /* crossword5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword5.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +124,7 @@
 				A56CAB9118A463AA00E66E4D /* README.md */,
 				A50A7372189E08C70089111F /* Crosswords */,
 				A50A7394189E08C70089111F /* CrosswordsTests */,
+				A5A93E8518A51C920083CF15 /* Puzzles */,
 				A56CAB7D18A4635000E66E4D /* Vendor */,
 				A50A736B189E08C70089111F /* Frameworks */,
 				A50A736A189E08C70089111F /* Products */,
@@ -163,10 +165,6 @@
 				A56CAB7818A4121200E66E4D /* GridView.m */,
 				A56CAB7118A3FD9800E66E4D /* PuzzleHelper.h */,
 				A56CAB7218A3FD9800E66E4D /* PuzzleHelper.m */,
-				A50A73A4189E08DD0089111F /* crossword1.json */,
-				A50A73A618A0266A0089111F /* crossword2.json */,
-				A56CAB1A18A30E6900E66E4D /* crossword3.json */,
-				A56CAB6F18A372F200E66E4D /* crossword4.json */,
 				A50A7387189E08C70089111F /* Images.xcassets */,
 				A50A7373189E08C70089111F /* Supporting Files */,
 			);
@@ -237,6 +235,18 @@
 				A56CAB8C18A4635000E66E4D /* GTMNSString+HTML.m */,
 			);
 			path = MWFeedParser;
+			sourceTree = "<group>";
+		};
+		A5A93E8518A51C920083CF15 /* Puzzles */ = {
+			isa = PBXGroup;
+			children = (
+				A5A93E8618A51C920083CF15 /* crossword1.json */,
+				A5A93E8718A51C920083CF15 /* crossword2.json */,
+				A5A93E8818A51C920083CF15 /* crossword3.json */,
+				A5A93E8918A51C920083CF15 /* crossword4.json */,
+				A5A93E8A18A51C920083CF15 /* crossword5.json */,
+			);
+			path = Puzzles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,11 +326,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50A7388189E08C70089111F /* Images.xcassets in Resources */,
-				A50A73A718A0266A0089111F /* crossword2.json in Resources */,
-				A56CAB1B18A30E6900E66E4D /* crossword3.json in Resources */,
-				A56CAB7018A372F200E66E4D /* crossword4.json in Resources */,
+				A5A93E8C18A51C920083CF15 /* crossword2.json in Resources */,
+				A5A93E8F18A51C920083CF15 /* crossword5.json in Resources */,
+				A5A93E8D18A51C920083CF15 /* crossword3.json in Resources */,
+				A5A93E8E18A51C920083CF15 /* crossword4.json in Resources */,
 				A50A7377189E08C70089111F /* InfoPlist.strings in Resources */,
-				A50A73A5189E08DE0089111F /* crossword1.json in Resources */,
+				A5A93E8B18A51C920083CF15 /* crossword1.json in Resources */,
 				A50A7380189E08C70089111F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,7 +340,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A56CAB7C18A41C7C00E66E4D /* crossword1.json in Resources */,
 				A50A7399189E08C70089111F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
