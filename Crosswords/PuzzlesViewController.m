@@ -1,5 +1,5 @@
 //
-//  MasterViewController.m
+//  PuzzlesViewController.m
 //  Crosswords
 //
 //  Created by Mark Alldritt on 2/1/2014.
@@ -7,16 +7,16 @@
 //
 
 #import "AppDelegate.h"
-#import "MasterViewController.h"
+#import "PuzzlesViewController.h"
 #import "DetailViewController.h"
 #import "GTMNSString+HTML.h"
 
-@interface MasterViewController ()
+@interface PuzzlesViewController ()
 
 
 @end
 
-@implementation MasterViewController
+@implementation PuzzlesViewController
 
 - (void)awakeFromNib
 {

@@ -1,5 +1,5 @@
 //
-//  MasterViewController.h
+//  PuzzlesViewController.h
 //  Crosswords
 //
 //  Created by Mark Alldritt on 2/1/2014.
@@ -10,7 +10,7 @@
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController
+@interface PuzzlesViewController : UITableViewController
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 

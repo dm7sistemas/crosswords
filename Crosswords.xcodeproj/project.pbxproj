@@ -14,7 +14,7 @@
 		A50A7379189E08C70089111F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A50A7378189E08C70089111F /* main.m */; };
 		A50A737D189E08C70089111F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A50A737C189E08C70089111F /* AppDelegate.m */; };
 		A50A7380189E08C70089111F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A50A737E189E08C70089111F /* Main.storyboard */; };
-		A50A7383189E08C70089111F /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50A7382189E08C70089111F /* MasterViewController.m */; };
+		A50A7383189E08C70089111F /* PuzzlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50A7382189E08C70089111F /* PuzzlesViewController.m */; };
 		A50A7386189E08C70089111F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50A7385189E08C70089111F /* DetailViewController.m */; };
 		A50A7388189E08C70089111F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A50A7387189E08C70089111F /* Images.xcassets */; };
 		A50A738F189E08C70089111F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50A738E189E08C70089111F /* XCTest.framework */; };
@@ -58,8 +58,8 @@
 		A50A737B189E08C70089111F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A50A737C189E08C70089111F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A50A737F189E08C70089111F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A50A7381189E08C70089111F /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		A50A7382189E08C70089111F /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		A50A7381189E08C70089111F /* PuzzlesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PuzzlesViewController.h; sourceTree = "<group>"; };
+		A50A7382189E08C70089111F /* PuzzlesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PuzzlesViewController.m; sourceTree = "<group>"; };
 		A50A7384189E08C70089111F /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		A50A7385189E08C70089111F /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		A50A7387189E08C70089111F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -157,8 +157,8 @@
 				A50A737B189E08C70089111F /* AppDelegate.h */,
 				A50A737C189E08C70089111F /* AppDelegate.m */,
 				A50A737E189E08C70089111F /* Main.storyboard */,
-				A50A7381189E08C70089111F /* MasterViewController.h */,
-				A50A7382189E08C70089111F /* MasterViewController.m */,
+				A50A7381189E08C70089111F /* PuzzlesViewController.h */,
+				A50A7382189E08C70089111F /* PuzzlesViewController.m */,
 				A50A7384189E08C70089111F /* DetailViewController.h */,
 				A50A7385189E08C70089111F /* DetailViewController.m */,
 				A56CAB7718A4121200E66E4D /* GridView.h */,
@@ -353,7 +353,7 @@
 			files = (
 				A50A737D189E08C70089111F /* AppDelegate.m in Sources */,
 				A56CAB7318A3FD9800E66E4D /* PuzzleHelper.m in Sources */,
-				A50A7383189E08C70089111F /* MasterViewController.m in Sources */,
+				A50A7383189E08C70089111F /* PuzzlesViewController.m in Sources */,
 				A50A7379189E08C70089111F /* main.m in Sources */,
 				A56CAB7918A4121200E66E4D /* GridView.m in Sources */,
 				A50A7386189E08C70089111F /* DetailViewController.m in Sources */,
