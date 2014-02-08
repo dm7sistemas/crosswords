@@ -181,10 +181,26 @@
     XCTAssert([helper cluesAtRow:7 column:10] == nil, @"cluesAtRow:7 column:10 found a clue when it should not have");
     XCTAssert([helper cluesAtRow:2 column:3] == nil, @"cluesAtRow:2 column:3 found a clue when it should not have");
     XCTAssert([helper cluesAtRow:20 column:20] == nil, @"cluesAtRow:20 column:20 found a clue when it should not have");
+    XCTAssert([helper cluesAtRow:19 column:8] == nil, @"cluesAtRow:20 column:20 found a clue when it should not have");
     
     //- (NSDictionary*)bestClueForRow:(NSInteger)row column:(NSInteger)column;
+    XCTAssert([[helper bestClueForRow:4 column:3] isEqual:cluesAcross[@28]], "bestClueForRow:4 column:3 returned the wrong object, received: %@, expected: %@", [helper bestClueForRow:4 column:3], cluesAcross[@28]);
+    XCTAssert([[helper bestClueForRow:12 column:1] isEqual:cluesDown[@75]], "bestClueForRow:12 column:1 returned the wrong object, received: %@, expected: %@", [helper bestClueForRow:12 column:1], cluesAcross[@75]);
+    XCTAssert([helper bestClueForRow:15 column:9] == nil, "bestClueForRow:15 column:9 returned the wrong object, received: %@, expected: nil", [helper bestClueForRow:15 column:9]);
+    
     //- (NSArray*)cluesIntersectingClue:(NSDictionary*) clue;
-
+    NSArray* r = [[helper cluesIntersectingClue:cluesDown[@17]] valueForKey:@"gridnum"];
+    NSArray* rd17 = @[@28, @24, @20, @16, @17];
+    XCTAssert([r isEqual:rd17], @"cluesIntersectingClue:17 returned the wrong objects, returned: %@, expected: %@", r, rd17);
+    r = [[helper cluesIntersectingClue:cluesAcross[@106]] valueForKey:@"gridnum"];
+    NSArray* ra106 = @[@106, @60, @58, @101, @100, @99, @94, @93];
+    XCTAssert([r isEqual:ra106], @"cluesIntersectingClue:106 returned the wrong objects, returned: %@, expected: %@", r, ra106);
+    r = [[helper cluesIntersectingClue:cluesDown[@6]] valueForKey:@"gridnum"];
+    NSArray* rd6 = @[@28, @24, @22, @18, @5, @6];
+    XCTAssert([r isEqual:rd6], @"cluesIntersectingClue:6 returned the wrong objects, returned: %@, expected: %@", r, rd6);
+    r = [[helper cluesIntersectingClue:cluesAcross[@121]] valueForKey:@"gridnum"];
+    NSArray* ra121 = @[@121, @58, @111, @21];
+    XCTAssert([r isEqual:ra121], @"cluesIntersectingClue:121 returned the wrong objects, returned: %@, expected: %@", r, ra121);
 }
 
 @end
