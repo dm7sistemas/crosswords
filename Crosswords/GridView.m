@@ -201,7 +201,7 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
 }
 
 - (void)setSelectedClue:(NSDictionary *)selectedClue {
-    NSParameterAssert(selectedClue[@"gridnum"]);
+    NSParameterAssert(!selectedClue || selectedClue[@"gridnum"]);
 
     if (![self.selectedClue isEqual:selectedClue]) {
         mSelectedClue = selectedClue;
