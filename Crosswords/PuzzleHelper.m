@@ -13,17 +13,34 @@
 #import "GTMNSString+HTML.h"
 
 
+@interface PuzzleHelper ()
+
+@property (strong, nonatomic) NSString* filename;
+
+@end
+
 @implementation PuzzleHelper
 
+@synthesize filename = mFilename;
 @synthesize puzzle = mPuzzle;
 @synthesize cluesAcross = mCluesAcross;
 @synthesize cluesDown = mCluesDown;
+@synthesize title = mTitle;
+@synthesize author = mAuthor;
+@synthesize editor = mEditor;
+@synthesize publisher = mPublisher;
+@synthesize copyright = mCopyright;
+@synthesize notes = mNotes;
+@synthesize playerGrid = mPlayerGrid;
 
-- (instancetype)initWithPuzzle:(NSDictionary *)puzzle {
+- (instancetype)initWithPuzzle:(NSDictionary *)puzzle filename:(NSString*) filename {
+    //  We need a unique ID for the puzzle.  The contents of the puzzle don't guarentee this, so I'm using the file name.  This will
+    //  probably not work in the long run, but it gets me moving forward.
     NSParameterAssert([puzzle isKindOfClass:[NSDictionary class]]);
 
     if ((self = [super init])) {
         mPuzzle = puzzle;
+        mFilename = filename;
     }
     
     return self;
@@ -33,8 +50,8 @@
     NSRegularExpression* regEx = [NSRegularExpression regularExpressionWithPattern:@"^(\\d+)\\.\\s*(.*)$" options:0 error:nil];
     NSMutableDictionary* result = [NSMutableDictionary dictionary];
     NSArray* gridNums = self.puzzle[@"gridnums"];
-    NSInteger rows = [[self.puzzle valueForKeyPath:@"size.rows"] integerValue];
-    NSInteger cols = [[self.puzzle valueForKeyPath:@"size.cols"] integerValue];
+    NSInteger rows = self.rows;
+    NSInteger cols = self.columns;
     NSInteger i = 0;
     
     for (NSString* aClue in clues) {
@@ -59,10 +76,10 @@
             ++j;
         }
         
-        NSAssert(row >= 0, @"gridnum not found");
-        NSAssert(row < rows, @"gridnum row too big!");
-        NSAssert(col >= 0, @"gridnum not found");
-        NSAssert(col < cols, @"gridnum row too big!");
+        NSAssert1(row >= 0, @"gridnum (%d) row not found", (int)clueNo);
+        NSAssert2(row < rows, @"gridnum row (%d) too big (%d)!", (int)row, (int)rows);
+        NSAssert1(col >= 0, @"gridnum (%d)column not found", (int)clueNo);
+        NSAssert2(col < cols, @"gridnum column (%d) too big (%d)!", (int)col, (int)cols);
         
         CGRect area = across ? CGRectMake(col, row, answer.length, 1.0) : CGRectMake(col, row, 1.0, answer.length);
 
@@ -116,8 +133,11 @@
 }
 
 - (NSArray*)cluesAtRow:(NSInteger)row column:(NSInteger)column {
+    NSParameterAssert(row >= 0 && row < self.rows);
+    NSParameterAssert(column >= 0 && column < self.columns);
+    
     //  Given a row & column, return the clue that begins at that location on the grid.
-    NSInteger cols = [[self.puzzle valueForKeyPath:@"size.cols"] integerValue];
+    NSInteger cols = self.columns;
     NSInteger index = row * cols + column;
     NSNumber* clueNo = self.puzzle[@"gridnums"][index];
     
@@ -214,6 +234,97 @@
     }
     
     return result.copy; // return a non-mutable version...
+}
+
+- (NSString*) title {
+    if (!mTitle) {
+        mTitle = self.puzzle[@"title"];
+        if ([mTitle isEqual:[NSNull null]] || mTitle.length == 0)
+            mTitle = @"Untitled";
+        else
+            mTitle = [[mTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] gtm_stringByUnescapingFromHTML];
+    }
+    return mTitle;
+}
+
+- (NSString*) author {
+    if (!mAuthor) {
+        mAuthor = self.puzzle[@"author"];
+        if ([mAuthor isEqual:[NSNull null]] || mAuthor.length == 0)
+            mAuthor = @"Author unknown";
+        else
+            mAuthor = [[mAuthor stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] gtm_stringByUnescapingFromHTML];
+    }
+    return mAuthor;
+}
+
+- (BOOL)hasAuthor {
+    NSString* author = self.puzzle[@"author"];
+    
+    return [author isEqual:[NSNull null]] || author.length == 0 ? NO : YES;
+}
+
+- (NSString*) editor {
+    if (!mEditor) {
+        mEditor = self.puzzle[@"editor"];
+        if ([mEditor isEqual:[NSNull null]] || mEditor.length == 0)
+            mEditor = @"";
+        else
+            mEditor = [[mEditor stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] gtm_stringByUnescapingFromHTML];
+    }
+    return mEditor;
+}
+
+- (NSString*) publisher {
+    if (!mPublisher) {
+        mPublisher = self.puzzle[@"publisher"];
+        if ([mPublisher isEqual:[NSNull null]] || mPublisher.length == 0)
+            mPublisher = @"Unknown publisher";
+        else
+            mPublisher = [[mPublisher stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] gtm_stringByUnescapingFromHTML];
+    }
+    return mPublisher;
+}
+
+- (NSString*) copyright {
+    if (!mCopyright) {
+        mCopyright = self.puzzle[@"copyright"];
+        if ([mCopyright isEqual:[NSNull null]] || mCopyright.length == 0)
+            mCopyright = @"Unknown";
+        else
+            mCopyright = [[mCopyright stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] gtm_stringByUnescapingFromHTML];
+    }
+    return mCopyright;
+}
+
+- (NSString*) notes {
+    if (!mNotes) {
+        mNotes = self.puzzle[@"jnotes"];
+        if ([mNotes isEqual:[NSNull null]] || mNotes.length == 0)
+            mNotes = @"";
+        else
+            mNotes = [[mNotes stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] gtm_stringByUnescapingFromHTML];
+    }
+    return mNotes;
+}
+
+- (NSUInteger)rows { return [[self.puzzle valueForKeyPath:@"size.rows"] integerValue]; }
+- (NSUInteger)columns { return [[self.puzzle valueForKeyPath:@"size.cols"] integerValue]; }
+
+- (NSArray*) playerGrid {
+    if (!mPlayerGrid) {
+        NSMutableArray* grid = [NSMutableArray arrayWithArray:self.puzzle[@"grid"]];
+        NSUInteger length = grid.count;
+        
+        for (NSUInteger i = 0; i < length; ++i) {
+            if (![grid[i] isEqualToString:@"."])
+                grid[i] = @"";
+        }
+        mPlayerGrid = grid.copy; // non-mutable copy.
+                                 // In time, I'm going to have to save the player's answers which will require that I alter this
+                                 // array.
+    }
+    return mPlayerGrid;
 }
 
 @end

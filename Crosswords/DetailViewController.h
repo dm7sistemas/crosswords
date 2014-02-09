@@ -17,6 +17,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *authorView;
 @property (weak, nonatomic) IBOutlet UILabel *copyrightView;
+@property (weak, nonatomic) IBOutlet UILabel *notesView;
+@property (weak, nonatomic) IBOutlet UISwitch *showAnswersView;
 @property (weak, nonatomic) IBOutlet GridView *gridView;
+
+- (IBAction)toggleShowAnswers:(id)sender;
 
 @end

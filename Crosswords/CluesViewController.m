@@ -182,6 +182,26 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
     }
 }
 
+- (NSString*)_formatAnswerLetterCounts:(NSDictionary*)clue {
+    NSArray* words = clue[@"words"];
+    
+    if (words) {
+        NSUInteger numWords = words.count;
+        NSString* result = @"";
+        
+        for (NSUInteger i = 0; i < numWords; ++i) {
+            if (i != numWords - 1)
+                result = [NSString stringWithFormat:@"%@, %d", result, (int)[words[i] rangeValue].length];
+            else
+                result = [NSString stringWithFormat:@"%@ and %d", result, (int)[words[i] rangeValue].length];
+        }
+        
+        return [NSString stringWithFormat:@"%@ letters", result];
+    }
+    else
+        return [NSString stringWithFormat:@"%d letters", (int)[clue[@"answer"] length]];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -190,7 +210,7 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
         NSDictionary* clue = self.searchResults[indexPath.row];
         
         cell.textLabel.text = clue[@"clue"];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d %@", (int)[clue[@"gridnum"] integerValue], [clue[@"across"] boolValue] ? @"across" : @"down"];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d %@, %@", (int)[clue[@"gridnum"] integerValue], [clue[@"across"] boolValue] ? @"across" : @"down", [self _formatAnswerLetterCounts:clue]];
     }
     else {
         NSDictionary* clues = indexPath.section == 0 ? self.puzzle.cluesAcross : self.puzzle.cluesDown;
@@ -202,6 +222,7 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
         
         [ats addAttributes:@{NSForegroundColorAttributeName: [UIColor grayColor]} range:NSMakeRange(0, NSMaxRange(r))];
         cell.textLabel.attributedText = ats;
+        cell.detailTextLabel.text = [self _formatAnswerLetterCounts:clue];
     }
     return cell;
 }

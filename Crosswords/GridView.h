@@ -17,5 +17,6 @@ extern NSString* GridViewSelectedClueChangedNotification;
 
 @property (strong, nonatomic) PuzzleHelper* puzzle;
 @property (strong, nonatomic) NSDictionary* selectedClue;
+@property (nonatomic) BOOL showAnswers;
 
 @end

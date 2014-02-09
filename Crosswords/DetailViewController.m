@@ -40,26 +40,29 @@
     // Update the user interface for the detail item.
 
     if (self.puzzle) {
-        NSDictionary* puzzle = self.puzzle.puzzle;
-        NSString* editor = puzzle[@"editor"];
-        NSString* author = puzzle[@"author"];
-        NSString* copyright = puzzle[@"copyright"];
-        
-        if ([editor isEqual:[NSNull null]] || editor.length == 0)
+        NSString* editor = self.puzzle.editor;
+        NSString* author = self.puzzle.author;
+        NSString* copyright = self.puzzle.copyright;
+
+        if ([author caseInsensitiveCompare:editor] == NSOrderedSame)
             editor = nil;
-        if ([author isEqual:[NSNull null]] || author.length == 0)
-            author = @"unknown";
-        if ([copyright isEqual:[NSNull null]] || copyright.length == 0)
-            copyright = nil;
-        
-        self.authorView.text = editor ? [NSString stringWithFormat:@"%@ (Editor: %@)", author, editor] : author;
-        self.navigationItem.title = puzzle[@"title"];
-        self.copyrightView.text = copyright ? [NSString stringWithFormat:@"%C %@", (UniChar) 0x00A9 /* Unicode copyright symbol */, copyright] : @"";
+
+        self.navigationItem.title = self.puzzle.title;
+        self.authorView.text = editor.length != 0 ? [NSString stringWithFormat:@"%@ (Editor: %@)", author, editor] : author;
+        self.copyrightView.text = copyright.length != 0 ? [NSString stringWithFormat:@"%C %@", (UniChar) 0x00A9 /* Unicode copyright symbol */, copyright] : @"";
+        self.notesView.text = self.puzzle.notes;
         self.gridView.puzzle = self.puzzle;
+        self.showAnswersView.hidden = NO;
         self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"Clues", @"Puzzle Clues");
     }
     else {
-        self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"Puzzles", @"Crossword Puzzles");        
+        self.navigationItem.title = NSLocalizedString(@"ChoosePuzzle", @"Choose a puzzle");
+        self.authorView.text = @"";
+        self.copyrightView.text = @"";
+        self.notesView.text = @"";
+        self.gridView.puzzle = nil;
+        self.showAnswersView.hidden = YES;
+        self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"Puzzles", @"Crossword Puzzles");
     }
 }
 
@@ -72,6 +75,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)toggleShowAnswers:(id)sender {
+    self.gridView.showAnswers = !self.gridView.showAnswers;
 }
 
 #pragma mark - Split view
