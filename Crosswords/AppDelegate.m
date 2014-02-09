@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "GTMNSString+HTML.h"
+#import "PuzzleHelper.h"
 
 
 NSMutableDictionary* gPublishers = nil;
@@ -22,29 +22,28 @@ NSMutableDictionary* gAuthors = nil;
     gAuthors = [NSMutableDictionary dictionary];
     
     for (NSString* jsonPath in [[NSBundle mainBundle] pathsForResourcesOfType:@"json" inDirectory:nil]) {
+        NSError* error = nil;
         NSDictionary* puzzle = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:jsonPath]
                                                                options:0
-                                                                 error:nil];
+                                                                 error:&error];
         
         if (puzzle) {
-            NSString* publisher = [puzzle[@"publisher"] gtm_stringByUnescapingFromHTML];
-            NSString* author = [puzzle[@"author"] gtm_stringByUnescapingFromHTML];
-            
-            if (!publisher || [publisher isEqual:[NSNull null]])
-                publisher = @"Unknown";
-            if (!author || [author isEqual:[NSNull null]])
-                author = @"Unknown";
+            PuzzleHelper* helper = [[PuzzleHelper alloc] initWithPuzzle:puzzle filename:[jsonPath lastPathComponent]];
+            NSString* publisher = helper.publisher;
+            NSString* author = helper.author;
             
             if (!gPublishers[publisher])
-                gPublishers[publisher] = [NSMutableArray arrayWithObject:puzzle];
+                gPublishers[publisher] = [NSMutableArray arrayWithObject:helper];
             else
-                [gPublishers[publisher] addObject:puzzle];
+                [gPublishers[publisher] addObject:helper];
 
             if (!gAuthors[author])
-                gAuthors[author] = [NSMutableArray arrayWithObject:puzzle];
+                gAuthors[author] = [NSMutableArray arrayWithObject:helper];
             else
-                [gAuthors[author] addObject:puzzle];
+                [gAuthors[author] addObject:helper];
         }
+        else
+            NSLog(@"Failed to read %@, error: %@", jsonPath, error);
     }
 
     // Override point for customization after application launch.

@@ -10,7 +10,7 @@
 #import "PuzzlesViewController.h"
 #import "DetailViewController.h"
 #import "CluesViewController.h"
-#import "GTMNSString+HTML.h"
+#import "PuzzleHelper.h"
 
 @interface PuzzlesViewController ()
 
@@ -92,21 +92,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    NSDictionary* puzzle = self.puzzles[self.sortedSections[indexPath.section]][indexPath.row];
+    PuzzleHelper* puzzle = self.puzzles[self.sortedSections[indexPath.section]][indexPath.row];
     
-    cell.textLabel.text = [puzzle[@"title"] gtm_stringByUnescapingFromHTML];
+    cell.textLabel.text = puzzle.title;
     
     if (self.puzzles == gPublishers)
-        cell.detailTextLabel.text = [puzzle[@"author"] gtm_stringByUnescapingFromHTML];
+        cell.detailTextLabel.text = puzzle.hasAuthor ? puzzle.author : nil;
     else if (self.puzzles == gAuthors)
-        cell.detailTextLabel.text = [puzzle[@"publisher"] gtm_stringByUnescapingFromHTML];
+        cell.detailTextLabel.text = puzzle.publisher;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary* crossword = self.puzzles[self.sortedSections[indexPath.section]][indexPath.row];
+    PuzzleHelper* puzzle = self.puzzles[self.sortedSections[indexPath.section]][indexPath.row];
     
-    self.selectedPuzzle = [[PuzzleHelper alloc] initWithPuzzle:crossword];
+    self.selectedPuzzle = puzzle;
     self.detailViewController.puzzle = self.selectedPuzzle;
     
     [self performSegueWithIdentifier:@"cluesSegue" sender:self];
