@@ -31,6 +31,7 @@
 		A56CAB8E18A4635000E66E4D /* MPWCGDrawingContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8318A4635000E66E4D /* MPWCGDrawingContext.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A56CAB8F18A4635000E66E4D /* MPWView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8618A4635000E66E4D /* MPWView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A56CAB9018A4635000E66E4D /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8C18A4635000E66E4D /* GTMNSString+HTML.m */; };
+		A583103B18ABD19400D143F2 /* nyt1.json in Resources */ = {isa = PBXBuildFile; fileRef = A583103A18ABD19400D143F2 /* nyt1.json */; };
 		A5A93E8B18A51C920083CF15 /* crossword1.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8618A51C920083CF15 /* crossword1.json */; };
 		A5A93E8C18A51C920083CF15 /* crossword2.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8718A51C920083CF15 /* crossword2.json */; };
 		A5A93E8D18A51C920083CF15 /* crossword3.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8818A51C920083CF15 /* crossword3.json */; };
@@ -93,6 +94,7 @@
 		A56CAB8B18A4635000E66E4D /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		A56CAB8C18A4635000E66E4D /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		A56CAB9118A463AA00E66E4D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		A583103A18ABD19400D143F2 /* nyt1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt1.json; sourceTree = "<group>"; };
 		A5A93E8618A51C920083CF15 /* crossword1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword1.json; sourceTree = "<group>"; };
 		A5A93E8718A51C920083CF15 /* crossword2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword2.json; sourceTree = "<group>"; };
 		A5A93E8818A51C920083CF15 /* crossword3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword3.json; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				A5A93E8818A51C920083CF15 /* crossword3.json */,
 				A5A93E8918A51C920083CF15 /* crossword4.json */,
 				A5A93E8A18A51C920083CF15 /* crossword5.json */,
+				A583103A18ABD19400D143F2 /* nyt1.json */,
 			);
 			path = Puzzles;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				A5A93E8E18A51C920083CF15 /* crossword4.json in Resources */,
 				A5A93EE318A56CB00083CF15 /* Localizable.strings in Resources */,
 				A50A7377189E08C70089111F /* InfoPlist.strings in Resources */,
+				A583103B18ABD19400D143F2 /* nyt1.json in Resources */,
 				A5A93E8B18A51C920083CF15 /* crossword1.json in Resources */,
 				A50A7380189E08C70089111F /* Main.storyboard in Resources */,
 			);
