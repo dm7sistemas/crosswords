@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PuzzleHelper.h"
-
+#import "PuzzleClue.h"
 
 extern NSString* DetailViewControllerSelectedClueChangedNotification;
 
@@ -16,7 +16,7 @@ extern NSString* DetailViewControllerSelectedClueChangedNotification;
 @interface CluesViewController : UITableViewController
 
 @property (strong, nonatomic) PuzzleHelper* puzzle;
-@property (strong, nonatomic) NSDictionary* selectedClue;
+@property (strong, nonatomic) PuzzleClue* selectedClue;
 
 @end
 

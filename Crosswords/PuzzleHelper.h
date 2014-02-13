@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class PuzzleClue;
+
 @interface PuzzleHelper : NSObject
 
 @property (strong, readonly, nonatomic) NSDictionary* puzzle;
@@ -27,7 +29,6 @@
 - (instancetype)initWithPuzzle:(NSDictionary*)puzzle filename:(NSString*) filename;
 
 - (NSArray*)cluesAtRow:(NSInteger)row column:(NSInteger)column;
-- (NSDictionary*)bestClueForRow:(NSInteger)row column:(NSInteger)column;
-- (NSArray*)cluesIntersectingClue:(NSDictionary*) clue;
+- (PuzzleClue*)bestClueForRow:(NSInteger)row column:(NSInteger)column;
 
 @end

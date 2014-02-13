@@ -27,7 +27,7 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
 
 - (void)_gridViewSelectionChanged:(NSNotification*) notification {
     GridView* gridView = notification.object;
-    NSDictionary* clue = notification.userInfo;
+    PuzzleClue* clue = notification.userInfo[@"clue"];
     
     if (gridView.puzzle == self.puzzle) {
         self.selectedClue = clue;
@@ -71,11 +71,11 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
     }
 }
 
-- (void)setSelectedClue:(NSDictionary *)newSelectedClue {
+- (void)setSelectedClue:(PuzzleClue*)newSelectedClue {
     if (newSelectedClue != mSelectedClue) {
         mSelectedClue = newSelectedClue;
         
-        NSNumber* key = newSelectedClue[@"gridnum"];
+        NSNumber* key = @(newSelectedClue.gridNumber);
         NSUInteger section = self.puzzle.cluesAcross[key] == nil ? 1 : 0;
         NSUInteger row = section == 0 ? [self.acrossClues indexOfObject:key] : [self.downClues indexOfObject:key];
         NSIndexPath* indexPath = [NSIndexPath indexPathForRow:row inSection:section];
@@ -108,7 +108,7 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
 
         [[NSNotificationCenter defaultCenter] postNotificationName:DetailViewControllerSelectedClueChangedNotification
                                                             object:self
-                                                          userInfo:newSelectedClue];
+                                                          userInfo:@{@"clue": newSelectedClue}];
     }
 }
 
@@ -182,8 +182,8 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
     }
 }
 
-- (NSString*)_formatAnswerLetterCounts:(NSDictionary*)clue {
-    NSArray* words = clue[@"words"];
+- (NSString*)_formatAnswerLetterCounts:(PuzzleClue*)clue {
+    NSArray* words = clue.words;
     
     if (words) {
         NSUInteger numWords = words.count;
@@ -199,7 +199,7 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
         return [NSString stringWithFormat:@"%@ letters", result];
     }
     else
-        return [NSString stringWithFormat:@"%d letters", (int)[clue[@"answer"] length]];
+        return [NSString stringWithFormat:@"%d letters", (int)clue.answer.length];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -207,17 +207,17 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        NSDictionary* clue = self.searchResults[indexPath.row];
+        PuzzleClue* clue = self.searchResults[indexPath.row];
         
-        cell.textLabel.text = clue[@"clue"];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d %@, %@", (int)[clue[@"gridnum"] integerValue], [clue[@"across"] boolValue] ? @"across" : @"down", [self _formatAnswerLetterCounts:clue]];
+        cell.textLabel.text = clue.clue;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d %@, %@", (int)clue.gridNumber, clue.across ? @"across" : @"down", [self _formatAnswerLetterCounts:clue]];
     }
     else {
         NSDictionary* clues = indexPath.section == 0 ? self.puzzle.cluesAcross : self.puzzle.cluesDown;
         NSNumber* key = indexPath.section == 0 ? self.acrossClues[indexPath.row] : self.downClues[indexPath.row];
-        NSDictionary* clue = clues[key];
+        PuzzleClue* clue = clues[key];
         
-        NSMutableAttributedString* ats = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@. %@", key, clue[@"clue"]]];
+        NSMutableAttributedString* ats = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@. %@", key, clue.clue]];
         NSRange r = [ats.string rangeOfString:@"."];
         
         [ats addAttributes:@{NSForegroundColorAttributeName: [UIColor grayColor]} range:NSMakeRange(0, NSMaxRange(r))];

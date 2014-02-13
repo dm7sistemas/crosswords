@@ -10,6 +10,7 @@
 //  information.  This object pairs with the puzzel NSDictionary to provide useful accessors
 
 #import "PuzzleHelper.h"
+#import "PuzzleClue.h"
 #import "GTMNSString+HTML.h"
 
 
@@ -51,7 +52,7 @@
     NSMutableDictionary* result = [NSMutableDictionary dictionary];
     NSArray* gridNums = self.puzzle[@"gridnums"];
     NSInteger rows = self.rows;
-    NSInteger cols = self.columns;
+    NSInteger columns = self.columns;
     NSInteger i = 0;
     
     for (NSString* aClue in clues) {
@@ -60,30 +61,34 @@
         
         NSAssert(match.numberOfRanges == 3, @"invalue clue string"); // make the code defensive for this in future
         
-        NSInteger clueNo = [[aClue substringWithRange:[match rangeAtIndex:1]] integerValue];
+        NSUInteger gridNumber = [[aClue substringWithRange:[match rangeAtIndex:1]] integerValue];
         NSString* clue = [[aClue substringWithRange:[match rangeAtIndex:2]] gtm_stringByUnescapingFromHTML];
         NSString* answer = [answers[i] gtm_stringByUnescapingFromHTML];
         NSInteger row = -1;
-        NSInteger col = -1;
+        NSInteger column = -1;
         
         NSUInteger j = 0;
         for (NSNumber* aGridNum in gridNums) {
-            if (aGridNum.integerValue == clueNo) {
-                row = j / cols;
-                col = j % cols;
+            if (aGridNum.integerValue == gridNumber) {
+                row = j / columns;
+                column = j % columns;
                 break;
             }
             ++j;
         }
         
-        NSAssert1(row >= 0, @"gridnum (%d) row not found", (int)clueNo);
+        NSAssert1(row >= 0, @"gridnum (%d) row not found", (int)gridNumber);
         NSAssert2(row < rows, @"gridnum row (%d) too big (%d)!", (int)row, (int)rows);
-        NSAssert1(col >= 0, @"gridnum (%d)column not found", (int)clueNo);
-        NSAssert2(col < cols, @"gridnum column (%d) too big (%d)!", (int)col, (int)cols);
-        
-        CGRect area = across ? CGRectMake(col, row, answer.length, 1.0) : CGRectMake(col, row, 1.0, answer.length);
+        NSAssert1(column >= 0, @"gridnum (%d)column not found", (int)gridNumber);
+        NSAssert2(column < columns, @"gridnum column (%d) too big (%d)!", (int)column, (int)columns);
 
-        result[@(clueNo)] = @{@"gridnum": @(clueNo), @"clue": clue, @"answer" : answer, @"row" : @(row), @"col" : @(col), @"across" : @(across), @"area" : [NSValue valueWithCGRect:area]};
+        result[@(gridNumber)] = [[PuzzleClue alloc] initWithPuzzle:self
+                                                               row:row
+                                                            column:column
+                                                        gridNumber:gridNumber
+                                                            across:across
+                                                              clue:clue
+                                                            answer:answer];
         ++i;
     }
     
@@ -139,11 +144,11 @@
     //  Given a row & column, return the clue that begins at that location on the grid.
     NSInteger cols = self.columns;
     NSInteger index = row * cols + column;
-    NSNumber* clueNo = self.puzzle[@"gridnums"][index];
+    NSNumber* gridNumber = self.puzzle[@"gridnums"][index];
     
-    if (clueNo > 0) {
-        NSDictionary* acrossClue = self.cluesAcross[clueNo];
-        NSDictionary* downClue = self.cluesDown[clueNo];
+    if (gridNumber > 0) {
+        NSDictionary* acrossClue = self.cluesAcross[gridNumber];
+        NSDictionary* downClue = self.cluesDown[gridNumber];
         
         if (acrossClue && downClue)
             return @[acrossClue, downClue];
@@ -157,7 +162,7 @@
     return nil;
 }
 
-- (NSDictionary*)bestClueForRow:(NSInteger)row column:(NSInteger)column {
+- (PuzzleClue*)bestClueForRow:(NSInteger)row column:(NSInteger)column {
     //  This routine differs from cluesAtRow:column: in that the row and column need not be the explicit start of a
     //  clue.  This routine looks around the row & column specified for the "best" clue.  For now, "best" is defined
     //  as the clue that begines at the cell "closest" to the row & column specified.  If there is a tie, its the
@@ -167,7 +172,7 @@
     //  user is tapping on.
     
     //  Start by seeing if the we can get a direct hit on the beginning on a clue.
-    NSDictionary* clue = [self cluesAtRow:row column:column][0];
+    PuzzleClue* clue = [self cluesAtRow:row column:column][0];
     
     if (!clue) {
         //  Nope.  Hunt through all the clues for a clue that intersects the row & column specified.  For
@@ -176,11 +181,11 @@
         
         NSInteger distance = NSIntegerMax;
         
-        for (NSDictionary* aClue in self.cluesAcross.allValues) {
-            if (row == [aClue[@"row"] integerValue] &&
-                column >= [aClue[@"col"] integerValue] &&
-                column < [aClue[@"col"] integerValue] + [aClue[@"answer"] length]) {
-                NSUInteger aClueDistance = MAX(ABS([aClue[@"col"] integerValue] - column), ABS([aClue[@"row"] integerValue] - row));
+        for (PuzzleClue* aClue in self.cluesAcross.allValues) {
+            if (row == aClue.row &&
+                column >= aClue.column &&
+                column < aClue.column + aClue.length) {
+                NSUInteger aClueDistance = MAX(ABS(aClue.column - column), ABS(aClue.row - row));
                 
                 if (aClueDistance < distance) {
                     distance = aClueDistance;
@@ -189,11 +194,11 @@
             }
         }
 
-        for (NSDictionary* aClue in self.cluesDown.allValues) {
-            if (column == [aClue[@"col"] integerValue] &&
-                row >= [aClue[@"row"] integerValue] &&
-                row < [aClue[@"row"] integerValue] + [aClue[@"answer"] length]) {
-                NSUInteger aClueDistance = MAX(ABS([aClue[@"col"] integerValue] - column), ABS([aClue[@"row"] integerValue] - row));
+        for (PuzzleClue* aClue in self.cluesDown.allValues) {
+            if (column == aClue.column &&
+                row >= aClue.row &&
+                row < aClue.row + aClue.length) {
+                NSUInteger aClueDistance = MAX(ABS(aClue.column - column), ABS(aClue.row - row));
                 
                 if (aClueDistance < distance) {
                     distance = aClueDistance;
@@ -204,36 +209,6 @@
     }
     
     return clue;
-}
-
-- (NSArray*)cluesIntersectingClue:(NSDictionary*) clue {
-    if (!clue)
-        return nil;
-    NSAssert(clue[@"area"], @"This does not appear to be a clue dictionary");
-
-    //  Determine all the clues that intersect with the answer for a clue.  This is brute force, but for now, its good enough.
-    
-    CGRect clueArea = [clue[@"area"] CGRectValue];
-    NSMutableArray* result = nil;
-    
-    for (NSDictionary* aClue in self.cluesAcross.allValues) {
-        if (CGRectIntersectsRect(clueArea, [aClue[@"area"] CGRectValue])) {
-            if (result)
-                [result addObject:aClue];
-            else
-                result = [NSMutableArray arrayWithObject:aClue];
-        }
-    }
-    for (NSDictionary* aClue in self.cluesDown.allValues) {
-        if (CGRectIntersectsRect(clueArea, [aClue[@"area"] CGRectValue])) {
-            if (result)
-                [result addObject:aClue];
-            else
-                result = [NSMutableArray arrayWithObject:aClue];
-        }
-    }
-    
-    return result.copy; // return a non-mutable version...
 }
 
 - (NSString*) title {
