@@ -8,7 +8,7 @@
 
 #import "MPWView_iOS.h"
 #import "PuzzleHelper.h"
-
+#import "PuzzleClue.h"
 
 extern NSString* GridViewSelectedClueChangedNotification;
 
@@ -16,7 +16,7 @@ extern NSString* GridViewSelectedClueChangedNotification;
 @interface GridView : MPWView
 
 @property (strong, nonatomic) PuzzleHelper* puzzle;
-@property (strong, nonatomic) NSDictionary* selectedClue;
+@property (strong, nonatomic) PuzzleClue* selectedClue;
 @property (nonatomic) BOOL showAnswers;
 
 @end

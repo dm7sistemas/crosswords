@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Late Night Software Ltd. All rights reserved.
 //
 
+#import "PopoverView.h"
 #import "GridView.h"
+#import "PuzzleClue.h"
 #import "CluesViewController.h"
 
 
@@ -28,7 +30,7 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
 
 -(void)_cluesTableSelectionChanged:(NSNotification*) notification {
     CluesViewController* cluesViewController = notification.object;
-    NSDictionary* clue = notification.userInfo;
+    PuzzleClue* clue = notification.userInfo[@"clue"];
 
     if (cluesViewController.puzzle == self.puzzle) {
         self.selectedClue = clue;
@@ -67,7 +69,7 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
     [self _getRow:&row andColumn:&col at:where];
     
     if (row >= 0 && col >= 0) {
-        NSDictionary* clue = [self.puzzle bestClueForRow:row column:col];
+        PuzzleClue* clue = [self.puzzle bestClueForRow:row column:col];
         
         self.selectedClue = clue;
     }
@@ -105,6 +107,10 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
         mPuzzle = puzzle;
         mSelectedClue = nil;
         
+#warning TODO
+        //  Some "trick" puzzles have gric cells with multi-letter values.  This code does not yet handle this
+        //  case.  An example of this type of puzzle is nyt2.json.
+
         __weak GridView* weakSelf = self;
         self.drawingBlock = ^(id <MPWDrawingContext> context) {
             CGRect frame = weakSelf.frame;
@@ -117,8 +123,8 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
             CGFloat cellsHeight = cellSize * rows;
             CGFloat cellsLeft = (width - cellsWidth) / 2.0;
             CGFloat cellsTop = (height - cellsHeight) / 2.0;
-            CGRect selectedArea = weakSelf.selectedClue ? [weakSelf.selectedClue[@"area"] CGRectValue] : CGRectMake(-1.0, -1.0, 0.0, 0.0);
-            NSArray* interectingClues = [weakSelf.puzzle cluesIntersectingClue:weakSelf.selectedClue];
+            CGRect selectedArea = weakSelf.selectedClue ? weakSelf.selectedClue.area : CGRectMake(-1.0, -1.0, 0.0, 0.0);
+            NSArray* interectingClues = weakSelf.selectedClue.intersectingClues;
             
             id gridColor = [context colorGray:0.0 alpha:1.0];
             id boxColor = [context colorGray:0.5 alpha:1.0];
@@ -155,8 +161,8 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
                         [context fillRect:r];
                     }
                     else {
-                        for (NSDictionary* aClue in interectingClues) {
-                            CGRect aClueArea = [aClue[@"area"] CGRectValue];
+                        for (PuzzleClue* aClue in interectingClues) {
+                            CGRect aClueArea = aClue.area;
                             if (CGRectIntersectsRect(aClueArea, p)) {
                                 //  This cell is part of one of the clues that intersects the selected clue, and so has a part to play in the answer
                                 NSRect r = NSInsetRect(NSMakeRect(cellsLeft + col * cellSize, cellsTop + cellsHeight - (row * cellSize) - cellSize, cellSize, cellSize), .5, .5);
@@ -183,8 +189,8 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
                     BOOL across = NO;
                     BOOL down = NO;
                     
-                    for (NSDictionary* aClue in clues) {
-                        if ([aClue[@"across"] boolValue])
+                    for (PuzzleClue* aClue in clues) {
+                        if (aClue.across)
                             across = YES;
                         else
                             down = YES;
@@ -223,32 +229,12 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
             [context setlinewidth:3.0];
             [context setStrokeColor:gridColor];
 
-            for (NSDictionary* clue in weakSelf.puzzle.cluesAcross.allValues) {
-                CGRect area = [clue[@"area"] CGRectValue];
-                NSArray* words = clue[@"words"];
-                NSArray* interectingCluesForClue = [weakSelf.puzzle cluesIntersectingClue:clue];
+            for (PuzzleClue* clue in weakSelf.puzzle.cluesAcross.allValues) {
+                CGRect area = clue.area;
+                NSArray* words = clue.words;
+                NSArray* interectingCluesForClue = clue.intersectingClues;
                 NSArray* intersectingRects = [interectingCluesForClue valueForKey:@"area"];
                 
-#if 0
-                //  Debug code to simulate word ranges within an answer.  Matt's cryptic crossword has these, so when I get that
-                //  imported, all this code can go.
-                if (!words) {
-                    //  For testing, simulate some data
-                    NSMutableArray* r = [NSMutableArray array];
-                    NSString* answer = clue[@"answer"];
-                    NSUInteger p = 0;
-                    
-                    while (p + 5 < answer.length) {
-                        [r addObject:[NSValue valueWithRange:NSMakeRange(p, 5)]];
-                        p += 5;
-                    }
-                    if (p > 0) {
-                        [r addObject:[NSValue valueWithRange:NSMakeRange(p, answer.length - p)]];
-                        words = r.copy;
-                    }
-                }
-#endif
-
                 //  Word seperators first...
                 if (words) {
                     NSUInteger letters = 0;
@@ -292,31 +278,11 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
                     }
                 }
             }
-            for (NSDictionary* clue in weakSelf.puzzle.cluesDown.allValues) {
-                CGRect area = [clue[@"area"] CGRectValue];
-                NSArray* words = clue[@"words"];
-                NSArray* interectingCluesForClue = [weakSelf.puzzle cluesIntersectingClue:clue];
+            for (PuzzleClue* clue in weakSelf.puzzle.cluesDown.allValues) {
+                CGRect area = clue.area;
+                NSArray* words = clue.words;
+                NSArray* interectingCluesForClue = clue.intersectingClues;
                 NSArray* intersectingRects = [interectingCluesForClue valueForKey:@"area"];
-
-#if 0
-                //  Debug code to simulate word ranges within an answer.  Matt's cryptic crossword has these, so when I get that
-                //  imported, all this code can go.
-                if (!words) {
-                    //  For testing, simulate some data
-                    NSMutableArray* r = [NSMutableArray array];
-                    NSString* answer = clue[@"answer"];
-                    NSUInteger p = 0;
-                    
-                    while (p + 5 < answer.length) {
-                        [r addObject:[NSValue valueWithRange:NSMakeRange(p, 5)]];
-                        p += 5;
-                    }
-                    if (p > 0) {
-                        [r addObject:[NSValue valueWithRange:NSMakeRange(p, answer.length - p)]];
-                        words = r.copy;
-                    }
-                }
-#endif
                 
                 //  Word seperators first...
                 if (words) {
@@ -386,15 +352,87 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
     }
 }
 
-- (void)setSelectedClue:(NSDictionary *)selectedClue {
-    NSParameterAssert(!selectedClue || selectedClue[@"gridnum"]);
-
+- (void)setSelectedClue:(PuzzleClue *)selectedClue {
     if (![self.selectedClue isEqual:selectedClue]) {
         mSelectedClue = selectedClue;
         [self setNeedsDisplay];
         [[NSNotificationCenter defaultCenter] postNotificationName:GridViewSelectedClueChangedNotification
                                                             object:self
-                                                          userInfo:selectedClue];
+                                                          userInfo:@{@"clue": selectedClue}];
+
+        if (selectedClue) {
+            CGRect frame = self.frame;
+            CGFloat width = floor(CGRectGetWidth(frame));
+            CGFloat height = floor(CGRectGetHeight(frame));
+            NSUInteger rows = self.puzzle.rows;
+            NSUInteger cols = self.puzzle.columns;
+            CGFloat cellSize = MIN(floor(MIN(width / cols, height / rows)), kMaxGridSize);
+            CGFloat cellsWidth = cellSize * cols;
+            CGFloat cellsHeight = cellSize * rows;
+            CGFloat cellsLeft = (width - cellsWidth) / 2.0;
+            CGFloat cellsTop = (height - cellsHeight) / 2.0;
+
+#if 1
+            for (PuzzleClue* aClue in selectedClue.intersectingClues) {
+                NSUInteger row = aClue.row;
+                NSUInteger col = aClue.column;
+                CGRect a1 = CGRectMake(cellsLeft + col * cellSize, cellsTop + row * cellSize, cellSize, cellSize);
+                
+                if (aClue.across)
+                    col += aClue.length - 1;
+                else
+                    row += aClue.length - 1;
+                CGRect a2 = CGRectMake(cellsLeft + col * cellSize, cellsTop + row * cellSize, cellSize, cellSize);
+                CGRect clueArea = CGRectUnion(a1, a2);
+                
+                NSMutableAttributedString* ats1 = [[NSMutableAttributedString alloc] initWithString:aClue.clue
+                                                                                         attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.0],
+                                                                                                      NSForegroundColorAttributeName: [UIColor blackColor]}];
+#if 0
+                NSAttributedString* ats2 = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"\n%d %@, %d letters",
+                                                                                       (int)aClue.gridNumber,
+                                                                                       aClue.across ? @"across" : @"down",
+                                                                                       (int)aClue.answer.length]
+                                                                           attributes:@{NSFontAttributeName: [UIFont italicSystemFontOfSize:10.0],
+                                                                                        NSForegroundColorAttributeName: [UIColor grayColor]}];
+                
+                [ats1 appendAttributedString:ats2];
+#endif
+                PopoverView* v = [PopoverView showPopoverAtPoint:CGPointMake(CGRectGetMidX(clueArea), CGRectGetMinY(clueArea))
+                                                          inView:self
+                                              withAttributedText:ats1
+                                                        delegate:nil];
+                v.alpha = 0.8;
+            }
+#endif
+            NSUInteger row = selectedClue.row;
+            NSUInteger col = selectedClue.column;
+            CGRect a1 = CGRectMake(cellsLeft + col * cellSize, cellsTop + row * cellSize, cellSize, cellSize);
+            
+            if (selectedClue.across)
+                col += selectedClue.length - 1;
+            else
+                row += selectedClue.length - 1;
+            CGRect a2 = CGRectMake(cellsLeft + col * cellSize, cellsTop + row * cellSize, cellSize, cellSize);
+            CGRect clueArea = CGRectUnion(a1, a2);
+            
+            NSMutableAttributedString* ats1 = [[NSMutableAttributedString alloc] initWithString:selectedClue.clue
+                                                                                     attributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0],
+                                                                                                  NSForegroundColorAttributeName: [UIColor blackColor]}];
+            NSAttributedString* ats2 = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"\n%d %@, %d letters",
+                                                                                   (int)selectedClue.gridNumber,
+                                                                                   selectedClue.across ? @"across" : @"down",
+                                                                                   (int)selectedClue.answer.length]
+                                                                       attributes:@{NSFontAttributeName: [UIFont italicSystemFontOfSize:12.0],
+                                                                                    NSForegroundColorAttributeName: [UIColor grayColor]}];
+            
+            [ats1 appendAttributedString:ats2];
+            PopoverView* v = [PopoverView showPopoverAtPoint:CGPointMake(CGRectGetMidX(clueArea), CGRectGetMinY(clueArea))
+                                                      inView:self
+                                          withAttributedText:ats1
+                                                    delegate:nil];
+            v.alpha = .95;
+        }
     }
 }
 
