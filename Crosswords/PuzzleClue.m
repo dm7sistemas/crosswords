@@ -105,4 +105,41 @@
     return mIntersectingClues;
 }
 
+- (NSString*)answerLetterCounts {
+    NSArray* words = self.words;
+    
+    if (words) {
+        NSUInteger numWords = words.count;
+        NSString* result = @"";
+        
+        for (NSUInteger i = 0; i < numWords; ++i) {
+            if (result.length == 0)
+                result = [NSString stringWithFormat:@"%d", (int)[words[i] rangeValue].length];
+            else if (i != numWords - 1)
+                result = [NSString stringWithFormat:@"%@, %d", result, (int)[words[i] rangeValue].length];
+            else
+                result = [NSString stringWithFormat:@"%@ and %d", result, (int)[words[i] rangeValue].length];
+        }
+        
+        return [NSString stringWithFormat:@"%@ letters", result];
+    }
+    else
+        return [NSString stringWithFormat:@"%d letters", (int)self.answer.length];
+}
+
+- (NSString*)displayClue {
+    //  Strip of any trailing letter count indications to make the clue string a little shorter.  This is used in sutations where
+    //  letter counts are displayed elsewhere in the UI.
+    NSRegularExpression* regEx = [NSRegularExpression regularExpressionWithPattern:@"(.*?)\\s+\\([0-9, ]+\\)?$" options:0 error:nil];
+    NSTextCheckingResult* match = [regEx firstMatchInString:self.clue options:0 range:NSMakeRange(0, self.clue.length)];
+    
+    if (match) {
+        NSAssert1(match.numberOfRanges == 2, @"invalid clue string: '%@'", self.clue); // make the code defensive for this in future
+        
+        return [self.clue substringWithRange:[match rangeAtIndex:1]];
+    }
+    else
+        return self.clue;
+}
+
 @end

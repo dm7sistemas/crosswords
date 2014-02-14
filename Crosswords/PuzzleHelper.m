@@ -68,7 +68,7 @@
 }
 
 - (NSDictionary*)_makeDictionaryForClues:(NSArray*) clues answers:(NSArray*) answers across:(BOOL) across {
-    NSRegularExpression* regEx = [NSRegularExpression regularExpressionWithPattern:@"^(\\d+)\\.?\\s+(.*)$" options:0 error:nil];
+    NSRegularExpression* regEx = [NSRegularExpression regularExpressionWithPattern:@"^\\s*(\\d+)\\.?\\s+(.*?)\\s*$" options:0 error:nil];
     NSMutableDictionary* result = [NSMutableDictionary dictionary];
     NSArray* gridNums = self.puzzle[@"gridnums"];
     NSInteger rows = self.rows;

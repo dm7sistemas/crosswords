@@ -403,10 +403,10 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
                                                                                          attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.0],
                                                                                                       NSForegroundColorAttributeName: [UIColor blackColor]}];
 #if 0
-                NSAttributedString* ats2 = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"\n%d %@, %d letters",
+                NSAttributedString* ats2 = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"\n%d %@, %@",
                                                                                        (int)aClue.gridNumber,
                                                                                        aClue.across ? @"across" : @"down",
-                                                                                       (int)aClue.answer.length]
+                                                                                       aClue.answerLetterCounts]
                                                                            attributes:@{NSFontAttributeName: [UIFont italicSystemFontOfSize:10.0],
                                                                                         NSForegroundColorAttributeName: [UIColor grayColor]}];
                 
@@ -431,13 +431,13 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
             CGRect a2 = CGRectMake(cellsLeft + col * cellSize, cellsTop + row * cellSize, cellSize, cellSize);
             CGRect clueArea = CGRectUnion(a1, a2);
             
-            NSMutableAttributedString* ats1 = [[NSMutableAttributedString alloc] initWithString:selectedClue.clue
+            NSMutableAttributedString* ats1 = [[NSMutableAttributedString alloc] initWithString:selectedClue.displayClue
                                                                                      attributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0],
                                                                                                   NSForegroundColorAttributeName: [UIColor blackColor]}];
-            NSAttributedString* ats2 = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"\n%d %@, %d letters",
+            NSAttributedString* ats2 = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"\n%d %@, %@",
                                                                                    (int)selectedClue.gridNumber,
                                                                                    selectedClue.across ? @"across" : @"down",
-                                                                                   (int)selectedClue.answer.length]
+                                                                                   selectedClue.answerLetterCounts]
                                                                        attributes:@{NSFontAttributeName: [UIFont italicSystemFontOfSize:12.0],
                                                                                     NSForegroundColorAttributeName: [UIColor grayColor]}];
             

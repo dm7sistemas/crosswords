@@ -182,26 +182,6 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
     }
 }
 
-- (NSString*)_formatAnswerLetterCounts:(PuzzleClue*)clue {
-    NSArray* words = clue.words;
-    
-    if (words) {
-        NSUInteger numWords = words.count;
-        NSString* result = @"";
-        
-        for (NSUInteger i = 0; i < numWords; ++i) {
-            if (i != numWords - 1)
-                result = [NSString stringWithFormat:@"%@, %d", result, (int)[words[i] rangeValue].length];
-            else
-                result = [NSString stringWithFormat:@"%@ and %d", result, (int)[words[i] rangeValue].length];
-        }
-        
-        return [NSString stringWithFormat:@"%@ letters", result];
-    }
-    else
-        return [NSString stringWithFormat:@"%d letters", (int)clue.answer.length];
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -209,20 +189,20 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         PuzzleClue* clue = self.searchResults[indexPath.row];
         
-        cell.textLabel.text = clue.clue;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d %@, %@", (int)clue.gridNumber, clue.across ? @"across" : @"down", [self _formatAnswerLetterCounts:clue]];
+        cell.textLabel.text = clue.displayClue;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d %@, %@", (int)clue.gridNumber, clue.across ? @"across" : @"down", clue.answerLetterCounts];
     }
     else {
         NSDictionary* clues = indexPath.section == 0 ? self.puzzle.cluesAcross : self.puzzle.cluesDown;
         NSNumber* key = indexPath.section == 0 ? self.acrossClues[indexPath.row] : self.downClues[indexPath.row];
         PuzzleClue* clue = clues[key];
         
-        NSMutableAttributedString* ats = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@. %@", key, clue.clue]];
+        NSMutableAttributedString* ats = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@. %@", key, clue.displayClue]];
         NSRange r = [ats.string rangeOfString:@"."];
         
         [ats addAttributes:@{NSForegroundColorAttributeName: [UIColor grayColor]} range:NSMakeRange(0, NSMaxRange(r))];
         cell.textLabel.attributedText = ats;
-        cell.detailTextLabel.text = [self _formatAnswerLetterCounts:clue];
+        cell.detailTextLabel.text = clue.answerLetterCounts;
     }
     return cell;
 }

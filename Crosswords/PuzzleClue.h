@@ -24,6 +24,8 @@
 @property (readonly, nonatomic) NSUInteger length; // length in grid cells of the answer
 @property (readonly, nonatomic) CGRect area; // area in grid cells of the answer
 @property (readonly, nonatomic) NSArray* intersectingClues;
+@property (readonly, nonatomic) NSString* answerLetterCounts;
+@property (readonly, nonatomic) NSString* displayClue; // stripped of letter counts
 
 - (instancetype)initWithPuzzle:(PuzzleHelper*) puzzle
                            row:(NSUInteger) row
