@@ -31,6 +31,7 @@
                     gridNumber:(NSUInteger) gridNum
                         across:(BOOL) across
                           clue:(NSString*) clue
-                        answer:(NSString*) answer;
+                        answer:(NSString*) answer
+                         words:(NSArray*) words;
 
 @end

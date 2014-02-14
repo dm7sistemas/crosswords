@@ -18,7 +18,8 @@
                     gridNumber:(NSUInteger) gridNumber
                         across:(BOOL) across
                           clue:(NSString*) clue
-                        answer:(NSString*) answer {
+                        answer:(NSString*) answer
+                         words:(NSArray*) words {
     if ((self = [super init])) {
         _puzzle = puzzle;
         _row = row;
@@ -27,6 +28,7 @@
         _across = across;
         _clue = clue;
         _answer = answer;
+        _words = words;
     }
     
     return self;
@@ -54,7 +56,7 @@
         NSAssert2(row < rows, @"row (%d) too large (%d)", (int)row, (int)rows);
         NSAssert2(column < columns, @"column (%d) too large (%d)", (int)column, (int)columns);
         NSString* s = grid[columns * row + column];
-        NSAssert3([[self.answer substringWithRange:NSMakeRange(i, s.length)] isEqualToString:s], @"Answer '%@' does not match grid ('%@' != '%@')", self.answer, [self.answer substringWithRange:NSMakeRange(i, s.length)], s);
+        NSAssert3([s isEqualToString:@" "] || [[self.answer substringWithRange:NSMakeRange(i, s.length)] isEqualToString:s], @"Answer '%@' does not match grid ('%@' != '%@')", self.answer, [self.answer substringWithRange:NSMakeRange(i, s.length)], s);
         
         i += s.length;
         result += 1;
@@ -64,35 +66,6 @@
             ++row;
     }
     return result;
-}
-
-- (NSArray*) words {
-#warning TODO
-    //  Some anwsers are made up of multiple words.  The JSON data format we are iusing does not
-    //  provide a means of representing this.  In time, I'll have to sort that out and make this
-    //  accessor returning something useful.
-    
-#if 0
-    //  Debug code to simulate word ranges within an answer.  Matt's cryptic crossword has these, so when I get that
-    //  imported, all this code can go.
-    if (!words) {
-        //  For testing, simulate some data
-        NSMutableArray* r = [NSMutableArray array];
-        NSString* answer = clue.answer;
-        NSUInteger p = 0;
-        
-        while (p + 5 < answer.length) {
-            [r addObject:[NSValue valueWithRange:NSMakeRange(p, 5)]];
-            p += 5;
-        }
-        if (p > 0) {
-            [r addObject:[NSValue valueWithRange:NSMakeRange(p, answer.length - p)]];
-            words = r.copy;
-        }
-    }
-#else
-    return nil;
-#endif
 }
 
 - (NSArray*) intersectingClues {

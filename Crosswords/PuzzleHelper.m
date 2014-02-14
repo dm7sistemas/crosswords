@@ -47,8 +47,28 @@
     return self;
 }
 
+- (NSString*)_makeAnswerForAnswer:(id) answer words:(NSArray**) words {
+    if ([answer isKindOfClass:[NSArray class]]) {
+        NSMutableArray* wordsArray = [NSMutableArray arrayWithCapacity:[answer count]];
+        NSString* result = @"";
+        NSUInteger pos = 0;
+        
+        for (NSString* aWord in answer) {
+            [wordsArray addObject:[NSValue valueWithRange:NSMakeRange(pos, aWord.length)]];
+            result = [NSString stringWithFormat:@"%@%@", result, aWord];
+            pos += aWord.length;
+        }
+        *words = wordsArray.copy; // non-mutable version
+        return result;
+    }
+    else {
+        *words = nil;
+        return [answer gtm_stringByUnescapingFromHTML];
+    }
+}
+
 - (NSDictionary*)_makeDictionaryForClues:(NSArray*) clues answers:(NSArray*) answers across:(BOOL) across {
-    NSRegularExpression* regEx = [NSRegularExpression regularExpressionWithPattern:@"^(\\d+)\\.\\s*(.*)$" options:0 error:nil];
+    NSRegularExpression* regEx = [NSRegularExpression regularExpressionWithPattern:@"^(\\d+)\\.?\\s+(.*)$" options:0 error:nil];
     NSMutableDictionary* result = [NSMutableDictionary dictionary];
     NSArray* gridNums = self.puzzle[@"gridnums"];
     NSInteger rows = self.rows;
@@ -59,11 +79,12 @@
         //  Clues are expressed as strings: '1. clue text'.  Here we break this up into a number, and the text
         NSTextCheckingResult* match = [regEx firstMatchInString:aClue options:0 range:NSMakeRange(0, aClue.length)];
         
-        NSAssert(match.numberOfRanges == 3, @"invalue clue string"); // make the code defensive for this in future
+        NSAssert1(match.numberOfRanges == 3, @"invalid clue string: '%@'", aClue); // make the code defensive for this in future
         
         NSUInteger gridNumber = [[aClue substringWithRange:[match rangeAtIndex:1]] integerValue];
         NSString* clue = [[aClue substringWithRange:[match rangeAtIndex:2]] gtm_stringByUnescapingFromHTML];
-        NSString* answer = [answers[i] gtm_stringByUnescapingFromHTML];
+        NSArray* words = nil;
+        NSString* answer = [self _makeAnswerForAnswer:answers[i] words:&words];
         NSInteger row = -1;
         NSInteger column = -1;
         
@@ -88,7 +109,8 @@
                                                         gridNumber:gridNumber
                                                             across:across
                                                               clue:clue
-                                                            answer:answer];
+                                                            answer:answer
+                                                             words:words];
         ++i;
     }
     
