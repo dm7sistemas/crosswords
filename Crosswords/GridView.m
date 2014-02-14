@@ -5,6 +5,7 @@
 //  Created by Mark Alldritt on 2/6/2014.
 //  Copyright (c) 2014 Late Night Software Ltd. All rights reserved.
 //
+//  GridView displays the entire puzzle grid.
 
 #import "PopoverView.h"
 #import "GridView.h"
@@ -352,13 +353,26 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
     }
 }
 
+- (void)_addMotionEffectsToView:(UIView*) view intensity:(CGFloat) intensity {
+    UIMotionEffectGroup *group = [[UIMotionEffectGroup alloc] init];
+    UIInterpolatingMotionEffect *xAxis = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    UIInterpolatingMotionEffect *yAxis = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    
+    xAxis.maximumRelativeValue = @(intensity);
+    xAxis.minimumRelativeValue = @(-intensity);
+    yAxis.maximumRelativeValue = @(intensity);
+    yAxis.minimumRelativeValue = @(-intensity);
+    group.motionEffects = @[xAxis, yAxis];
+    [view addMotionEffect:group];
+}
+
 - (void)setSelectedClue:(PuzzleClue *)selectedClue {
     if (![self.selectedClue isEqual:selectedClue]) {
         mSelectedClue = selectedClue;
         [self setNeedsDisplay];
         [[NSNotificationCenter defaultCenter] postNotificationName:GridViewSelectedClueChangedNotification
                                                             object:self
-                                                          userInfo:@{@"clue": selectedClue}];
+                                                          userInfo:selectedClue ? @{@"clue": selectedClue} : nil];
 
         if (selectedClue) {
             CGRect frame = self.frame;
@@ -403,6 +417,7 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
                                               withAttributedText:ats1
                                                         delegate:nil];
                 v.alpha = 0.8;
+                [self _addMotionEffectsToView:v intensity:12.0];
             }
 #endif
             NSUInteger row = selectedClue.row;
@@ -432,6 +447,7 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
                                           withAttributedText:ats1
                                                     delegate:nil];
             v.alpha = .95;
+            [self _addMotionEffectsToView:v intensity:20.0];
         }
     }
 }
