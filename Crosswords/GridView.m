@@ -108,7 +108,7 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
         mSelectedClue = nil;
         
 #warning TODO
-        //  Some "trick" puzzles have gric cells with multi-letter values.  This code does not yet handle this
+        //  Some "trick" puzzles have grid cells with multi-letter values.  This code does not yet handle this
         //  case.  An example of this type of puzzle is nyt2.json.
 
         __weak GridView* weakSelf = self;
