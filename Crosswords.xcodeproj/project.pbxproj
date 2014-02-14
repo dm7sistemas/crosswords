@@ -32,6 +32,9 @@
 		A56CAB8F18A4635000E66E4D /* MPWView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8618A4635000E66E4D /* MPWView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A56CAB9018A4635000E66E4D /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8C18A4635000E66E4D /* GTMNSString+HTML.m */; };
 		A583103B18ABD19400D143F2 /* nyt1.json in Resources */ = {isa = PBXBuildFile; fileRef = A583103A18ABD19400D143F2 /* nyt1.json */; };
+		A583104118ABDBDE00D143F2 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = A583103E18ABDBDE00D143F2 /* PopoverView.m */; };
+		A583104318ACFBC800D143F2 /* nyt2.json in Resources */ = {isa = PBXBuildFile; fileRef = A583104218ACFBC800D143F2 /* nyt2.json */; };
+		A583104618AD52C600D143F2 /* PuzzleClue.m in Sources */ = {isa = PBXBuildFile; fileRef = A583104518AD52C600D143F2 /* PuzzleClue.m */; };
 		A5A93E8B18A51C920083CF15 /* crossword1.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8618A51C920083CF15 /* crossword1.json */; };
 		A5A93E8C18A51C920083CF15 /* crossword2.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8718A51C920083CF15 /* crossword2.json */; };
 		A5A93E8D18A51C920083CF15 /* crossword3.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8818A51C920083CF15 /* crossword3.json */; };
@@ -39,6 +42,9 @@
 		A5A93E8F18A51C920083CF15 /* crossword5.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8A18A51C920083CF15 /* crossword5.json */; };
 		A5A93EDE18A537DB0083CF15 /* CluesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A93EDD18A537DB0083CF15 /* CluesViewController.m */; };
 		A5A93EE318A56CB00083CF15 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5A93EE218A56CB00083CF15 /* Localizable.strings */; };
+		A5E43B3318AE6798005075B3 /* nyt3.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B3218AE6798005075B3 /* nyt3.json */; };
+		A5E43B3918AE8904005075B3 /* cryptic26179.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B3718AE8904005075B3 /* cryptic26179.json */; };
+		A5E43B3A18AE8904005075B3 /* cryptic26171.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B3818AE8904005075B3 /* cryptic26171.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +101,13 @@
 		A56CAB8C18A4635000E66E4D /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		A56CAB9118A463AA00E66E4D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		A583103A18ABD19400D143F2 /* nyt1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt1.json; sourceTree = "<group>"; };
+		A583103D18ABDBDE00D143F2 /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
+		A583103E18ABDBDE00D143F2 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
+		A583103F18ABDBDE00D143F2 /* PopoverView_Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView_Configuration.h; sourceTree = "<group>"; };
+		A583104018ABDBDE00D143F2 /* PopoverViewCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverViewCompatibility.h; sourceTree = "<group>"; };
+		A583104218ACFBC800D143F2 /* nyt2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt2.json; sourceTree = "<group>"; };
+		A583104418AD52C600D143F2 /* PuzzleClue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzleClue.h; sourceTree = "<group>"; };
+		A583104518AD52C600D143F2 /* PuzzleClue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzleClue.m; sourceTree = "<group>"; };
 		A5A93E8618A51C920083CF15 /* crossword1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword1.json; sourceTree = "<group>"; };
 		A5A93E8718A51C920083CF15 /* crossword2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword2.json; sourceTree = "<group>"; };
 		A5A93E8818A51C920083CF15 /* crossword3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = crossword3.json; sourceTree = "<group>"; };
@@ -103,6 +116,9 @@
 		A5A93EDC18A537DB0083CF15 /* CluesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CluesViewController.h; sourceTree = "<group>"; };
 		A5A93EDD18A537DB0083CF15 /* CluesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CluesViewController.m; sourceTree = "<group>"; };
 		A5A93EE218A56CB00083CF15 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		A5E43B3218AE6798005075B3 /* nyt3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt3.json; sourceTree = "<group>"; };
+		A5E43B3718AE8904005075B3 /* cryptic26179.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cryptic26179.json; sourceTree = "<group>"; };
+		A5E43B3818AE8904005075B3 /* cryptic26171.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cryptic26171.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +194,8 @@
 				A56CAB7818A4121200E66E4D /* GridView.m */,
 				A56CAB7118A3FD9800E66E4D /* PuzzleHelper.h */,
 				A56CAB7218A3FD9800E66E4D /* PuzzleHelper.m */,
+				A583104418AD52C600D143F2 /* PuzzleClue.h */,
+				A583104518AD52C600D143F2 /* PuzzleClue.m */,
 				A50A7387189E08C70089111F /* Images.xcassets */,
 				A50A7373189E08C70089111F /* Supporting Files */,
 			);
@@ -218,6 +236,7 @@
 		A56CAB7D18A4635000E66E4D /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				A583103C18ABDBDE00D143F2 /* PopoverView */,
 				A56CAB7E18A4635000E66E4D /* DrawingContext */,
 				A56CAB8A18A4635000E66E4D /* MWFeedParser */,
 			);
@@ -251,6 +270,17 @@
 			path = MWFeedParser;
 			sourceTree = "<group>";
 		};
+		A583103C18ABDBDE00D143F2 /* PopoverView */ = {
+			isa = PBXGroup;
+			children = (
+				A583103D18ABDBDE00D143F2 /* PopoverView.h */,
+				A583103E18ABDBDE00D143F2 /* PopoverView.m */,
+				A583103F18ABDBDE00D143F2 /* PopoverView_Configuration.h */,
+				A583104018ABDBDE00D143F2 /* PopoverViewCompatibility.h */,
+			);
+			path = PopoverView;
+			sourceTree = "<group>";
+		};
 		A5A93E8518A51C920083CF15 /* Puzzles */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +292,10 @@
 				A5A93E8918A51C920083CF15 /* crossword4.json */,
 				A5A93E8A18A51C920083CF15 /* crossword5.json */,
 				A583103A18ABD19400D143F2 /* nyt1.json */,
+				A583104218ACFBC800D143F2 /* nyt2.json */,
+				A5E43B3218AE6798005075B3 /* nyt3.json */,
+				A5E43B3718AE8904005075B3 /* cryptic26179.json */,
+				A5E43B3818AE8904005075B3 /* cryptic26171.json */,
 			);
 			path = Puzzles;
 			sourceTree = "<group>";
@@ -345,12 +379,16 @@
 				A50A7388189E08C70089111F /* Images.xcassets in Resources */,
 				A5A93E8C18A51C920083CF15 /* crossword2.json in Resources */,
 				A513019018A7ED4D008228D5 /* azed_2170.json in Resources */,
+				A5E43B3318AE6798005075B3 /* nyt3.json in Resources */,
+				A583104318ACFBC800D143F2 /* nyt2.json in Resources */,
 				A513018C18A70CFF008228D5 /* azed_2174.json in Resources */,
 				A5A93E8F18A51C920083CF15 /* crossword5.json in Resources */,
 				A5A93E8D18A51C920083CF15 /* crossword3.json in Resources */,
+				A5E43B3A18AE8904005075B3 /* cryptic26171.json in Resources */,
 				A5A93E8E18A51C920083CF15 /* crossword4.json in Resources */,
 				A5A93EE318A56CB00083CF15 /* Localizable.strings in Resources */,
 				A50A7377189E08C70089111F /* InfoPlist.strings in Resources */,
+				A5E43B3918AE8904005075B3 /* cryptic26179.json in Resources */,
 				A583103B18ABD19400D143F2 /* nyt1.json in Resources */,
 				A5A93E8B18A51C920083CF15 /* crossword1.json in Resources */,
 				A50A7380189E08C70089111F /* Main.storyboard in Resources */,
@@ -378,10 +416,12 @@
 				A5A93EDE18A537DB0083CF15 /* CluesViewController.m in Sources */,
 				A50A7379189E08C70089111F /* main.m in Sources */,
 				A56CAB7918A4121200E66E4D /* GridView.m in Sources */,
+				A583104618AD52C600D143F2 /* PuzzleClue.m in Sources */,
 				A50A7386189E08C70089111F /* DetailViewController.m in Sources */,
 				A56CAB9018A4635000E66E4D /* GTMNSString+HTML.m in Sources */,
 				A56CAB8F18A4635000E66E4D /* MPWView.m in Sources */,
 				A56CAB8D18A4635000E66E4D /* MPWAbstractCGContext.m in Sources */,
+				A583104118ABDBDE00D143F2 /* PopoverView.m in Sources */,
 				A56CAB8E18A4635000E66E4D /* MPWCGDrawingContext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
