@@ -146,7 +146,7 @@
     NSInteger index = row * cols + column;
     NSNumber* gridNumber = self.puzzle[@"gridnums"][index];
     
-    if (gridNumber > 0) {
+    if ([gridNumber integerValue] > 0) {
         NSDictionary* acrossClue = self.cluesAcross[gridNumber];
         NSDictionary* downClue = self.cluesDown[gridNumber];
         
@@ -179,13 +179,13 @@
         //  each intersecting clue, calculate a "distance" from the row & column specified.  With the distance, we
         //  can then look for hits with the shortest distance.
         
-        NSInteger distance = NSIntegerMax;
+        NSUInteger distance = NSIntegerMax;
         
         for (PuzzleClue* aClue in self.cluesAcross.allValues) {
             if (row == aClue.row &&
                 column >= aClue.column &&
                 column < aClue.column + aClue.length) {
-                NSUInteger aClueDistance = MAX(ABS(aClue.column - column), ABS(aClue.row - row));
+                NSUInteger aClueDistance = MAX(ABS((NSInteger)aClue.column - (NSInteger)column), ABS((NSInteger)aClue.row - (NSInteger)row));
                 
                 if (aClueDistance < distance) {
                     distance = aClueDistance;
@@ -198,7 +198,7 @@
             if (column == aClue.column &&
                 row >= aClue.row &&
                 row < aClue.row + aClue.length) {
-                NSUInteger aClueDistance = MAX(ABS(aClue.column - column), ABS(aClue.row - row));
+                NSUInteger aClueDistance = MAX(ABS((NSInteger)aClue.column - (NSInteger)column), ABS((NSInteger)aClue.row - (NSInteger)row));
                 
                 if (aClueDistance < distance) {
                     distance = aClueDistance;
