@@ -71,11 +71,11 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
     }
 }
 
-- (void)setSelectedClue:(PuzzleClue*)newSelectedClue {
-    if (newSelectedClue != mSelectedClue) {
-        mSelectedClue = newSelectedClue;
+- (void)setSelectedClue:(PuzzleClue*)selectedClue {
+    if (selectedClue != mSelectedClue) {
+        mSelectedClue = selectedClue;
         
-        NSNumber* key = @(newSelectedClue.gridNumber);
+        NSNumber* key = @(selectedClue.gridNumber);
         NSUInteger section = self.puzzle.cluesAcross[key] == nil ? 1 : 0;
         NSUInteger row = section == 0 ? [self.acrossClues indexOfObject:key] : [self.downClues indexOfObject:key];
         NSIndexPath* indexPath = [NSIndexPath indexPathForRow:row inSection:section];
@@ -87,7 +87,7 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
         }
         
         if (self.searchDisplayController.isActive) {
-            row = [self.searchResults indexOfObject:newSelectedClue];
+            row = [self.searchResults indexOfObject:selectedClue];
             
             if (row == NSNotFound) {
                 indexPath = self.searchDisplayController.searchResultsTableView.indexPathForSelectedRow;
@@ -108,7 +108,7 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
 
         [[NSNotificationCenter defaultCenter] postNotificationName:DetailViewControllerSelectedClueChangedNotification
                                                             object:self
-                                                          userInfo:@{@"clue": newSelectedClue}];
+                                                          userInfo:selectedClue ? @{@"clue": selectedClue} : nil];
     }
 }
 
