@@ -45,6 +45,7 @@
 		A5E43B3318AE6798005075B3 /* nyt3.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B3218AE6798005075B3 /* nyt3.json */; };
 		A5E43B3918AE8904005075B3 /* cryptic26179.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B3718AE8904005075B3 /* cryptic26179.json */; };
 		A5E43B3A18AE8904005075B3 /* cryptic26171.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B3818AE8904005075B3 /* cryptic26171.json */; };
+		A5E43B3C18AF43AF005075B3 /* nyt4.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B3B18AF43AF005075B3 /* nyt4.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		A5E43B3218AE6798005075B3 /* nyt3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt3.json; sourceTree = "<group>"; };
 		A5E43B3718AE8904005075B3 /* cryptic26179.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cryptic26179.json; sourceTree = "<group>"; };
 		A5E43B3818AE8904005075B3 /* cryptic26171.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cryptic26171.json; sourceTree = "<group>"; };
+		A5E43B3B18AF43AF005075B3 /* nyt4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt4.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +296,7 @@
 				A583103A18ABD19400D143F2 /* nyt1.json */,
 				A583104218ACFBC800D143F2 /* nyt2.json */,
 				A5E43B3218AE6798005075B3 /* nyt3.json */,
+				A5E43B3B18AF43AF005075B3 /* nyt4.json */,
 				A5E43B3718AE8904005075B3 /* cryptic26179.json */,
 				A5E43B3818AE8904005075B3 /* cryptic26171.json */,
 			);
@@ -381,6 +384,7 @@
 				A513019018A7ED4D008228D5 /* azed_2170.json in Resources */,
 				A5E43B3318AE6798005075B3 /* nyt3.json in Resources */,
 				A583104318ACFBC800D143F2 /* nyt2.json in Resources */,
+				A5E43B3C18AF43AF005075B3 /* nyt4.json in Resources */,
 				A513018C18A70CFF008228D5 /* azed_2174.json in Resources */,
 				A5A93E8F18A51C920083CF15 /* crossword5.json in Resources */,
 				A5A93E8D18A51C920083CF15 /* crossword3.json in Resources */,
