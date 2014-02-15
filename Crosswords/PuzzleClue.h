@@ -23,8 +23,12 @@
 
 @property (readonly, nonatomic) NSUInteger length; // length in grid cells of the answer
 @property (readonly, nonatomic) CGRect area; // area in grid cells of the answer
+@property (readonly, nonatomic) NSArray* siblingClues; // portions of the answer sharing the same clue
+@property (readonly, nonatomic) BOOL isPrimary;
+@property (readonly, nonatomic) PuzzleClue* primaryClue;
 @property (readonly, nonatomic) NSArray* intersectingClues;
 @property (readonly, nonatomic) NSString* answerLetterCounts;
+@property (readonly, nonatomic) NSString* answerSeeAlsos;
 @property (readonly, nonatomic) NSString* displayClue; // stripped of letter counts
 
 - (instancetype)initWithPuzzle:(PuzzleHelper*) puzzle

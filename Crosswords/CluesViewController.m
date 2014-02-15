@@ -199,10 +199,12 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
         
         NSMutableAttributedString* ats = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@. %@", key, clue.displayClue]];
         NSRange r = [ats.string rangeOfString:@"."];
+        NSString* letterCounts = clue.answerLetterCounts;
+        NSString* seeAlsos = clue.answerSeeAlsos;
         
         [ats addAttributes:@{NSForegroundColorAttributeName: [UIColor grayColor]} range:NSMakeRange(0, NSMaxRange(r))];
         cell.textLabel.attributedText = ats;
-        cell.detailTextLabel.text = clue.answerLetterCounts;
+        cell.detailTextLabel.text = seeAlsos ? [NSString stringWithFormat:@"%@ (%@)", letterCounts, seeAlsos] : letterCounts;
     }
     return cell;
 }
