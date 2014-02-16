@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class PuzzleHelper;
+@class Puzzle;
 
 @interface PuzzleClue : NSObject
 
-@property (weak, readonly, nonatomic) PuzzleHelper* puzzle;
+@property (weak, readonly, nonatomic) Puzzle* puzzle;
 @property (readonly, nonatomic) NSUInteger row;
 @property (readonly, nonatomic) NSUInteger column;
 @property (readonly, nonatomic) NSUInteger gridNumber;
@@ -31,7 +31,7 @@
 @property (readonly, nonatomic) NSString* answerSeeAlsos;
 @property (readonly, nonatomic) NSString* displayClue; // stripped of letter counts
 
-- (instancetype)initWithPuzzle:(PuzzleHelper*) puzzle
+- (instancetype)initWithPuzzle:(Puzzle*) puzzle
                            row:(NSUInteger) row
                         column:(NSUInteger) column
                     gridNumber:(NSUInteger) gridNum

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Late Night Software Ltd. All rights reserved.
 //
 
-#import "PuzzleHelper.h"
+#import "Puzzle.h"
 #import "PuzzleClue.h"
 
 extern NSString* GridViewSelectedClueChangedNotification;
@@ -14,7 +14,7 @@ extern NSString* GridViewSelectedClueChangedNotification;
 
 @interface GridView : UIView
 
-@property (strong, nonatomic) PuzzleHelper* puzzle;
+@property (strong, nonatomic) Puzzle* puzzle;
 @property (strong, nonatomic) PuzzleClue* selectedClue;
 @property (nonatomic) BOOL showAnswers;
 

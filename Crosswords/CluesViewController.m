@@ -60,7 +60,7 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setPuzzle:(PuzzleHelper *)newPuzzle {
+- (void)setPuzzle:(Puzzle *)newPuzzle {
     if (newPuzzle != mPuzzle) {
         mPuzzle = newPuzzle;
         

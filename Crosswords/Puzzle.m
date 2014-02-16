@@ -1,5 +1,5 @@
 //
-//  PuzzleHelper.m
+//  Puzzle.m
 //  Crosswords
 //
 //  Created by Mark Alldritt on 2/6/2014.
@@ -9,18 +9,18 @@
 //  Puzzles are stored in NSDictionary instances, but sometimes some logic is needed to pull out useful
 //  information.  This object pairs with the puzzel NSDictionary to provide useful accessors
 
-#import "PuzzleHelper.h"
+#import "Puzzle.h"
 #import "PuzzleClue.h"
 #import "GTMNSString+HTML.h"
 
 
-@interface PuzzleHelper ()
+@interface Puzzle ()
 
 @property (strong, nonatomic) NSString* filename;
 
 @end
 
-@implementation PuzzleHelper
+@implementation Puzzle
 
 @synthesize filename = mFilename;
 @synthesize puzzle = mPuzzle;

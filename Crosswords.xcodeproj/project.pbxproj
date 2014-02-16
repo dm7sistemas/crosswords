@@ -24,9 +24,9 @@
 		A50A739B189E08C70089111F /* CrosswordsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A50A739A189E08C70089111F /* CrosswordsTests.m */; };
 		A513018C18A70CFF008228D5 /* azed_2174.json in Resources */ = {isa = PBXBuildFile; fileRef = A513018B18A70CFF008228D5 /* azed_2174.json */; };
 		A513019018A7ED4D008228D5 /* azed_2170.json in Resources */ = {isa = PBXBuildFile; fileRef = A513018F18A7ED4D008228D5 /* azed_2170.json */; };
-		A56CAB7318A3FD9800E66E4D /* PuzzleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB7218A3FD9800E66E4D /* PuzzleHelper.m */; };
+		A56CAB7318A3FD9800E66E4D /* Puzzle.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB7218A3FD9800E66E4D /* Puzzle.m */; };
 		A56CAB7918A4121200E66E4D /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB7818A4121200E66E4D /* GridView.m */; };
-		A56CAB7B18A41C6600E66E4D /* PuzzleHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB7A18A41C6600E66E4D /* PuzzleHelperTests.m */; };
+		A56CAB7B18A41C6600E66E4D /* PuzzleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB7A18A41C6600E66E4D /* PuzzleTests.m */; };
 		A56CAB8D18A4635000E66E4D /* MPWAbstractCGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8118A4635000E66E4D /* MPWAbstractCGContext.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A56CAB8E18A4635000E66E4D /* MPWCGDrawingContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8318A4635000E66E4D /* MPWCGDrawingContext.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A56CAB8F18A4635000E66E4D /* MPWView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8618A4635000E66E4D /* MPWView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -82,11 +82,11 @@
 		A50A739A189E08C70089111F /* CrosswordsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrosswordsTests.m; sourceTree = "<group>"; };
 		A513018B18A70CFF008228D5 /* azed_2174.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = azed_2174.json; sourceTree = "<group>"; };
 		A513018F18A7ED4D008228D5 /* azed_2170.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = azed_2170.json; sourceTree = "<group>"; };
-		A56CAB7118A3FD9800E66E4D /* PuzzleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PuzzleHelper.h; sourceTree = "<group>"; };
-		A56CAB7218A3FD9800E66E4D /* PuzzleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzleHelper.m; sourceTree = "<group>"; };
+		A56CAB7118A3FD9800E66E4D /* Puzzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Puzzle.h; sourceTree = "<group>"; };
+		A56CAB7218A3FD9800E66E4D /* Puzzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Puzzle.m; sourceTree = "<group>"; };
 		A56CAB7718A4121200E66E4D /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
 		A56CAB7818A4121200E66E4D /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
-		A56CAB7A18A41C6600E66E4D /* PuzzleHelperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzleHelperTests.m; sourceTree = "<group>"; };
+		A56CAB7A18A41C6600E66E4D /* PuzzleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzleTests.m; sourceTree = "<group>"; };
 		A56CAB7F18A4635000E66E4D /* AccessorMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessorMacros.h; sourceTree = "<group>"; };
 		A56CAB8018A4635000E66E4D /* MPWAbstractCGContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPWAbstractCGContext.h; sourceTree = "<group>"; };
 		A56CAB8118A4635000E66E4D /* MPWAbstractCGContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPWAbstractCGContext.m; sourceTree = "<group>"; };
@@ -194,8 +194,8 @@
 				A50A7385189E08C70089111F /* DetailViewController.m */,
 				A56CAB7718A4121200E66E4D /* GridView.h */,
 				A56CAB7818A4121200E66E4D /* GridView.m */,
-				A56CAB7118A3FD9800E66E4D /* PuzzleHelper.h */,
-				A56CAB7218A3FD9800E66E4D /* PuzzleHelper.m */,
+				A56CAB7118A3FD9800E66E4D /* Puzzle.h */,
+				A56CAB7218A3FD9800E66E4D /* Puzzle.m */,
 				A583104418AD52C600D143F2 /* PuzzleClue.h */,
 				A583104518AD52C600D143F2 /* PuzzleClue.m */,
 				A50A7387189E08C70089111F /* Images.xcassets */,
@@ -220,7 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				A50A739A189E08C70089111F /* CrosswordsTests.m */,
-				A56CAB7A18A41C6600E66E4D /* PuzzleHelperTests.m */,
+				A56CAB7A18A41C6600E66E4D /* PuzzleTests.m */,
 				A50A7395189E08C70089111F /* Supporting Files */,
 			);
 			path = CrosswordsTests;
@@ -415,7 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50A737D189E08C70089111F /* AppDelegate.m in Sources */,
-				A56CAB7318A3FD9800E66E4D /* PuzzleHelper.m in Sources */,
+				A56CAB7318A3FD9800E66E4D /* Puzzle.m in Sources */,
 				A50A7383189E08C70089111F /* PuzzlesViewController.m in Sources */,
 				A5A93EDE18A537DB0083CF15 /* CluesViewController.m in Sources */,
 				A50A7379189E08C70089111F /* main.m in Sources */,
@@ -435,7 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50A739B189E08C70089111F /* CrosswordsTests.m in Sources */,
-				A56CAB7B18A41C6600E66E4D /* PuzzleHelperTests.m in Sources */,
+				A56CAB7B18A41C6600E66E4D /* PuzzleTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

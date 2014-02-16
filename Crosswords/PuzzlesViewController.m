@@ -10,11 +10,11 @@
 #import "PuzzlesViewController.h"
 #import "DetailViewController.h"
 #import "CluesViewController.h"
-#import "PuzzleHelper.h"
+#import "Puzzle.h"
 
 @interface PuzzlesViewController ()
 
-@property (strong, nonatomic) PuzzleHelper* selectedPuzzle;
+@property (strong, nonatomic) Puzzle* selectedPuzzle;
 @property (strong, nonatomic) NSArray* sortedSections;
 
 @end
@@ -92,7 +92,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    PuzzleHelper* puzzle = self.puzzles[self.sortedSections[indexPath.section]][indexPath.row];
+    Puzzle* puzzle = self.puzzles[self.sortedSections[indexPath.section]][indexPath.row];
     
     cell.textLabel.text = puzzle.title;
     
@@ -104,7 +104,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    PuzzleHelper* puzzle = self.puzzles[self.sortedSections[indexPath.section]][indexPath.row];
+    Puzzle* puzzle = self.puzzles[self.sortedSections[indexPath.section]][indexPath.row];
     
     self.selectedPuzzle = puzzle;
     self.detailViewController.puzzle = self.selectedPuzzle;

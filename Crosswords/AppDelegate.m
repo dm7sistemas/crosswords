@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "PuzzleHelper.h"
+#import "Puzzle.h"
 
 
 NSMutableDictionary* gPublishers = nil;
@@ -28,7 +28,7 @@ NSMutableDictionary* gAuthors = nil;
                                                                  error:&error];
         
         if (puzzle) {
-            PuzzleHelper* helper = [[PuzzleHelper alloc] initWithPuzzle:puzzle filename:[jsonPath lastPathComponent]];
+            Puzzle* helper = [[Puzzle alloc] initWithPuzzle:puzzle filename:[jsonPath lastPathComponent]];
             NSString* publisher = helper.publisher;
             NSString* author = helper.author;
             

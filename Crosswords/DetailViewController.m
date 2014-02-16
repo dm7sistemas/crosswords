@@ -8,7 +8,7 @@
 
 #import "DetailViewController.h"
 #import "GridView.h"
-#import "PuzzleHelper.h"
+#import "Puzzle.h"
 
 
 @interface DetailViewController ()
@@ -23,7 +23,7 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setPuzzle:(PuzzleHelper*)newPuzzle {
+- (void)setPuzzle:(Puzzle*)newPuzzle {
     if (mPuzzle != newPuzzle) {
         mPuzzle = newPuzzle;
         

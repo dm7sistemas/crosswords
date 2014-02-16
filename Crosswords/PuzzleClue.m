@@ -7,7 +7,7 @@
 //
 
 #import "PuzzleClue.h"
-#import "PuzzleHelper.h"
+#import "Puzzle.h"
 
 
 @implementation PuzzleClue
@@ -15,7 +15,7 @@
 @synthesize intersectingClues = mIntersectingClues;
 @synthesize length = mLength;
 
-- (instancetype)initWithPuzzle:(PuzzleHelper*) puzzle
+- (instancetype)initWithPuzzle:(Puzzle*) puzzle
                            row:(NSUInteger) row
                         column:(NSUInteger) column
                     gridNumber:(NSUInteger) gridNumber

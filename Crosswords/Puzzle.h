@@ -1,5 +1,5 @@
 //
-//  PuzzleHelper.h
+//  Puzzle.h
 //  Crosswords
 //
 //  Created by Mark Alldritt on 2/6/2014.
@@ -10,7 +10,7 @@
 
 @class PuzzleClue;
 
-@interface PuzzleHelper : NSObject
+@interface Puzzle : NSObject
 
 @property (strong, readonly, nonatomic) NSDictionary* puzzle;
 @property (readonly, nonatomic) NSString* title;

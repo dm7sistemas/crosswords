@@ -104,7 +104,7 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
     return NO;
 }
 
--(void)setPuzzle:(PuzzleHelper *)puzzle {
+-(void)setPuzzle:(Puzzle *)puzzle {
     if (puzzle != mPuzzle) {
         mPuzzle = puzzle;
         mSelectedClue = nil;

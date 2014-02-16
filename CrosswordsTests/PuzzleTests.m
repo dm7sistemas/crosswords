@@ -1,5 +1,5 @@
 //
-//  PuzzleHelperTests.m
+//  PuzzleTests.m
 //  Crosswords
 //
 //  Created by Mark Alldritt on 2/6/2014.
@@ -7,17 +7,17 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "PuzzleHelper.h"
+#import "Puzzle.h"
 #import "PuzzleClue.h"
 
 
-@interface PuzzleHelperTests : XCTestCase
+@interface PuzzleTests : XCTestCase
 
 @property (nonatomic) NSDictionary* puzzle;
 
 @end
 
-@implementation PuzzleHelperTests
+@implementation PuzzleTests
 
 - (void)setUp {
     [super setUp];
@@ -37,8 +37,8 @@
 }
 
 - (void)test1 {
-    //  Test the PuzzleHelper accessors
-    PuzzleHelper* helper = [[PuzzleHelper alloc] initWithPuzzle:self.puzzle filename:@"xxxx"];
+    //  Test the Puzzle accessors
+    Puzzle* helper = [[Puzzle alloc] initWithPuzzle:self.puzzle filename:@"xxxx"];
     
     XCTAssert(helper.puzzle == self.puzzle, @"puzzle accessor failed");
     
@@ -164,8 +164,8 @@
 }
 
 - (void)test2 {
-    //  Test the PuzzleHelper clue lookups
-    PuzzleHelper* helper = [[PuzzleHelper alloc] initWithPuzzle:self.puzzle filename:@"xxxx"];
+    //  Test the Puzzle clue lookups
+    Puzzle* helper = [[Puzzle alloc] initWithPuzzle:self.puzzle filename:@"xxxx"];
     NSDictionary* cluesAcross = helper.cluesAcross;
     NSDictionary* cluesDown = helper.cluesDown;
     
