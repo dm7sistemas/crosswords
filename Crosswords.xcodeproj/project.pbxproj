@@ -49,6 +49,7 @@
 		A5E43B3A18AE8904005075B3 /* cryptic26171.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B3818AE8904005075B3 /* cryptic26171.json */; };
 		A5E43B3C18AF43AF005075B3 /* nyt4.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B3B18AF43AF005075B3 /* nyt4.json */; };
 		A5E43B4118B14312005075B3 /* nyt5.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B4018B14312005075B3 /* nyt5.json */; };
+		A5F8A0A818B51746004A195B /* nyt8.json in Resources */ = {isa = PBXBuildFile; fileRef = A5F8A0A718B51746004A195B /* nyt8.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		A5E43B3818AE8904005075B3 /* cryptic26171.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cryptic26171.json; sourceTree = "<group>"; };
 		A5E43B3B18AF43AF005075B3 /* nyt4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt4.json; sourceTree = "<group>"; };
 		A5E43B4018B14312005075B3 /* nyt5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt5.json; sourceTree = "<group>"; };
+		A5F8A0A718B51746004A195B /* nyt8.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt8.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +308,7 @@
 				A5E43B4018B14312005075B3 /* nyt5.json */,
 				A50CBE5618B2B65C0000505E /* nyt6.json */,
 				A544B7C818B3AE1A00AAAD55 /* nyt7.json */,
+				A5F8A0A718B51746004A195B /* nyt8.json */,
 				A5E43B3718AE8904005075B3 /* cryptic26179.json */,
 				A5E43B3818AE8904005075B3 /* cryptic26171.json */,
 			);
@@ -403,6 +406,7 @@
 				A5E43B3A18AE8904005075B3 /* cryptic26171.json in Resources */,
 				A5A93E8E18A51C920083CF15 /* crossword4.json in Resources */,
 				A5A93EE318A56CB00083CF15 /* Localizable.strings in Resources */,
+				A5F8A0A818B51746004A195B /* nyt8.json in Resources */,
 				A50A7377189E08C70089111F /* InfoPlist.strings in Resources */,
 				A5E43B3918AE8904005075B3 /* cryptic26179.json in Resources */,
 				A583103B18ABD19400D143F2 /* nyt1.json in Resources */,
