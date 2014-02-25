@@ -25,6 +25,7 @@
 		A50CBE5718B2B65C0000505E /* nyt6.json in Resources */ = {isa = PBXBuildFile; fileRef = A50CBE5618B2B65C0000505E /* nyt6.json */; };
 		A513018C18A70CFF008228D5 /* azed_2174.json in Resources */ = {isa = PBXBuildFile; fileRef = A513018B18A70CFF008228D5 /* azed_2174.json */; };
 		A513019018A7ED4D008228D5 /* azed_2170.json in Resources */ = {isa = PBXBuildFile; fileRef = A513018F18A7ED4D008228D5 /* azed_2170.json */; };
+		A529D85118BCEF1A0065F51D /* nyt_2014-02-25.json in Resources */ = {isa = PBXBuildFile; fileRef = A529D85018BCEF1A0065F51D /* nyt_2014-02-25.json */; };
 		A544B7C918B3AE1A00AAAD55 /* nyt7.json in Resources */ = {isa = PBXBuildFile; fileRef = A544B7C818B3AE1A00AAAD55 /* nyt7.json */; };
 		A56CAB7318A3FD9800E66E4D /* Puzzle.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB7218A3FD9800E66E4D /* Puzzle.m */; };
 		A56CAB7918A4121200E66E4D /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB7818A4121200E66E4D /* GridView.m */; };
@@ -90,6 +91,7 @@
 		A50CBE5618B2B65C0000505E /* nyt6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt6.json; sourceTree = "<group>"; };
 		A513018B18A70CFF008228D5 /* azed_2174.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = azed_2174.json; sourceTree = "<group>"; };
 		A513018F18A7ED4D008228D5 /* azed_2170.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = azed_2170.json; sourceTree = "<group>"; };
+		A529D85018BCEF1A0065F51D /* nyt_2014-02-25.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-02-25.json"; sourceTree = "<group>"; };
 		A544B7C818B3AE1A00AAAD55 /* nyt7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt7.json; sourceTree = "<group>"; };
 		A56CAB7118A3FD9800E66E4D /* Puzzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Puzzle.h; sourceTree = "<group>"; };
 		A56CAB7218A3FD9800E66E4D /* Puzzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Puzzle.m; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				A58CD23918B643DB00E85432 /* nyt9.json */,
 				A573CC7218B846DE00430200 /* nyt_2014-02-21.json */,
 				A573D03418BC339400430200 /* nyt_2014-02-24.json */,
+				A529D85018BCEF1A0065F51D /* nyt_2014-02-25.json */,
 				A5E43B3718AE8904005075B3 /* cryptic26179.json */,
 				A5E43B3818AE8904005075B3 /* cryptic26171.json */,
 			);
@@ -405,6 +408,7 @@
 				A5A93E8C18A51C920083CF15 /* crossword2.json in Resources */,
 				A513019018A7ED4D008228D5 /* azed_2170.json in Resources */,
 				A5E43B3318AE6798005075B3 /* nyt3.json in Resources */,
+				A529D85118BCEF1A0065F51D /* nyt_2014-02-25.json in Resources */,
 				A583104318ACFBC800D143F2 /* nyt2.json in Resources */,
 				A5E43B3C18AF43AF005075B3 /* nyt4.json in Resources */,
 				A513018C18A70CFF008228D5 /* azed_2174.json in Resources */,
