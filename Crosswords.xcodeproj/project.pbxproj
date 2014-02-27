@@ -36,6 +36,7 @@
 		A56CAB9018A4635000E66E4D /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = A56CAB8C18A4635000E66E4D /* GTMNSString+HTML.m */; };
 		A573CC7318B846DE00430200 /* nyt_2014-02-21.json in Resources */ = {isa = PBXBuildFile; fileRef = A573CC7218B846DE00430200 /* nyt_2014-02-21.json */; };
 		A573D03518BC339400430200 /* nyt_2014-02-24.json in Resources */ = {isa = PBXBuildFile; fileRef = A573D03418BC339400430200 /* nyt_2014-02-24.json */; };
+		A579BA9818BEBD25008F7A3B /* nyt_2014-02-26.json in Resources */ = {isa = PBXBuildFile; fileRef = A579BA9718BEBD25008F7A3B /* nyt_2014-02-26.json */; };
 		A583103B18ABD19400D143F2 /* nyt1.json in Resources */ = {isa = PBXBuildFile; fileRef = A583103A18ABD19400D143F2 /* nyt1.json */; };
 		A583104118ABDBDE00D143F2 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = A583103E18ABDBDE00D143F2 /* PopoverView.m */; };
 		A583104318ACFBC800D143F2 /* nyt2.json in Resources */ = {isa = PBXBuildFile; fileRef = A583104218ACFBC800D143F2 /* nyt2.json */; };
@@ -114,6 +115,7 @@
 		A56CAB9118A463AA00E66E4D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		A573CC7218B846DE00430200 /* nyt_2014-02-21.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-02-21.json"; sourceTree = "<group>"; };
 		A573D03418BC339400430200 /* nyt_2014-02-24.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-02-24.json"; sourceTree = "<group>"; };
+		A579BA9718BEBD25008F7A3B /* nyt_2014-02-26.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-02-26.json"; sourceTree = "<group>"; };
 		A583103A18ABD19400D143F2 /* nyt1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt1.json; sourceTree = "<group>"; };
 		A583103D18ABDBDE00D143F2 /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
 		A583103E18ABDBDE00D143F2 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				A573CC7218B846DE00430200 /* nyt_2014-02-21.json */,
 				A573D03418BC339400430200 /* nyt_2014-02-24.json */,
 				A529D85018BCEF1A0065F51D /* nyt_2014-02-25.json */,
+				A579BA9718BEBD25008F7A3B /* nyt_2014-02-26.json */,
 				A5E43B3718AE8904005075B3 /* cryptic26179.json */,
 				A5E43B3818AE8904005075B3 /* cryptic26171.json */,
 			);
@@ -413,6 +416,7 @@
 				A5E43B3C18AF43AF005075B3 /* nyt4.json in Resources */,
 				A513018C18A70CFF008228D5 /* azed_2174.json in Resources */,
 				A5A93E8F18A51C920083CF15 /* crossword5.json in Resources */,
+				A579BA9818BEBD25008F7A3B /* nyt_2014-02-26.json in Resources */,
 				A5A93E8D18A51C920083CF15 /* crossword3.json in Resources */,
 				A5E43B4118B14312005075B3 /* nyt5.json in Resources */,
 				A58CD23A18B643DB00E85432 /* nyt9.json in Resources */,
