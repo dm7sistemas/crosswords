@@ -176,11 +176,11 @@
         
         for (NSUInteger i = 0; i < numWords; ++i) {
             if (result.length == 0)
-                result = [NSString stringWithFormat:@"%d", (int)[words[i] rangeValue].length];
+                result = [NSString stringWithFormat:@"%lu", (unsigned long)[words[i] rangeValue].length];
             else if (i != numWords - 1)
-                result = [NSString stringWithFormat:@"%@, %d", result, (int)[words[i] rangeValue].length];
+                result = [NSString stringWithFormat:@"%@, %lu", result, (unsigned long)[words[i] rangeValue].length];
             else
-                result = [NSString stringWithFormat:@"%@ and %d", result, (int)[words[i] rangeValue].length];
+                result = [NSString stringWithFormat:@"%@ and %lu", result, (unsigned long)[words[i] rangeValue].length];
         }
         
         return [NSString stringWithFormat:@"%@ letters", result];
@@ -196,11 +196,11 @@
     
     for (NSUInteger i = 0; i < numSinglings; ++i) {
         if (!result)
-            result = [NSString stringWithFormat:@"See %d %@", [siblingClues[i] gridNumber], [siblingClues[i] across] ? @"across" : @"down"];
+            result = [NSString stringWithFormat:@"See %lu %@", (unsigned long)[siblingClues[i] gridNumber], [siblingClues[i] across] ? @"across" : @"down"];
         else if (i != numSinglings - 1)
-            result = [NSString stringWithFormat:@"%@, %d %@", result, [siblingClues[i] gridNumber], [siblingClues[i] across] ? @"across" : @"down"];
+            result = [NSString stringWithFormat:@"%@, %lu %@", result, (unsigned long)[siblingClues[i] gridNumber], [siblingClues[i] across] ? @"across" : @"down"];
         else
-            result = [NSString stringWithFormat:@"%@ and %d %@", result, [siblingClues[i] gridNumber], [siblingClues[i] across] ? @"across" : @"down"];
+            result = [NSString stringWithFormat:@"%@ and %lu %@", result, (unsigned long)[siblingClues[i] gridNumber], [siblingClues[i] across] ? @"across" : @"down"];
     }
     return result;
 }
