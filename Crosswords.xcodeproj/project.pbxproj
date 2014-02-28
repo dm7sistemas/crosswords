@@ -37,6 +37,7 @@
 		A573CC7318B846DE00430200 /* nyt_2014-02-21.json in Resources */ = {isa = PBXBuildFile; fileRef = A573CC7218B846DE00430200 /* nyt_2014-02-21.json */; };
 		A573D03518BC339400430200 /* nyt_2014-02-24.json in Resources */ = {isa = PBXBuildFile; fileRef = A573D03418BC339400430200 /* nyt_2014-02-24.json */; };
 		A579BA9818BEBD25008F7A3B /* nyt_2014-02-26.json in Resources */ = {isa = PBXBuildFile; fileRef = A579BA9718BEBD25008F7A3B /* nyt_2014-02-26.json */; };
+		A579BAA118BFAB4F008F7A3B /* nyt_2014-02-27.json in Resources */ = {isa = PBXBuildFile; fileRef = A579BAA018BFAB4F008F7A3B /* nyt_2014-02-27.json */; };
 		A583103B18ABD19400D143F2 /* nyt1.json in Resources */ = {isa = PBXBuildFile; fileRef = A583103A18ABD19400D143F2 /* nyt1.json */; };
 		A583104118ABDBDE00D143F2 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = A583103E18ABDBDE00D143F2 /* PopoverView.m */; };
 		A583104318ACFBC800D143F2 /* nyt2.json in Resources */ = {isa = PBXBuildFile; fileRef = A583104218ACFBC800D143F2 /* nyt2.json */; };
@@ -49,6 +50,7 @@
 		A5A93E8F18A51C920083CF15 /* crossword5.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8A18A51C920083CF15 /* crossword5.json */; };
 		A5A93EDE18A537DB0083CF15 /* CluesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A93EDD18A537DB0083CF15 /* CluesViewController.m */; };
 		A5A93EE318A56CB00083CF15 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5A93EE218A56CB00083CF15 /* Localizable.strings */; };
+		A5B8573518C0C81E0039DD0F /* nyt_2014-02-28.json in Resources */ = {isa = PBXBuildFile; fileRef = A5B8573418C0C81E0039DD0F /* nyt_2014-02-28.json */; };
 		A5E43B3318AE6798005075B3 /* nyt3.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B3218AE6798005075B3 /* nyt3.json */; };
 		A5E43B3918AE8904005075B3 /* cryptic26179.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B3718AE8904005075B3 /* cryptic26179.json */; };
 		A5E43B3A18AE8904005075B3 /* cryptic26171.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B3818AE8904005075B3 /* cryptic26171.json */; };
@@ -116,6 +118,7 @@
 		A573CC7218B846DE00430200 /* nyt_2014-02-21.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-02-21.json"; sourceTree = "<group>"; };
 		A573D03418BC339400430200 /* nyt_2014-02-24.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-02-24.json"; sourceTree = "<group>"; };
 		A579BA9718BEBD25008F7A3B /* nyt_2014-02-26.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-02-26.json"; sourceTree = "<group>"; };
+		A579BAA018BFAB4F008F7A3B /* nyt_2014-02-27.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-02-27.json"; sourceTree = "<group>"; };
 		A583103A18ABD19400D143F2 /* nyt1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt1.json; sourceTree = "<group>"; };
 		A583103D18ABDBDE00D143F2 /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
 		A583103E18ABDBDE00D143F2 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
@@ -133,6 +136,7 @@
 		A5A93EDC18A537DB0083CF15 /* CluesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CluesViewController.h; sourceTree = "<group>"; };
 		A5A93EDD18A537DB0083CF15 /* CluesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CluesViewController.m; sourceTree = "<group>"; };
 		A5A93EE218A56CB00083CF15 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		A5B8573418C0C81E0039DD0F /* nyt_2014-02-28.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-02-28.json"; sourceTree = "<group>"; };
 		A5E43B3218AE6798005075B3 /* nyt3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt3.json; sourceTree = "<group>"; };
 		A5E43B3718AE8904005075B3 /* cryptic26179.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cryptic26179.json; sourceTree = "<group>"; };
 		A5E43B3818AE8904005075B3 /* cryptic26171.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cryptic26171.json; sourceTree = "<group>"; };
@@ -324,6 +328,8 @@
 				A573D03418BC339400430200 /* nyt_2014-02-24.json */,
 				A529D85018BCEF1A0065F51D /* nyt_2014-02-25.json */,
 				A579BA9718BEBD25008F7A3B /* nyt_2014-02-26.json */,
+				A579BAA018BFAB4F008F7A3B /* nyt_2014-02-27.json */,
+				A5B8573418C0C81E0039DD0F /* nyt_2014-02-28.json */,
 				A5E43B3718AE8904005075B3 /* cryptic26179.json */,
 				A5E43B3818AE8904005075B3 /* cryptic26171.json */,
 			);
@@ -408,6 +414,7 @@
 			files = (
 				A50CBE5718B2B65C0000505E /* nyt6.json in Resources */,
 				A50A7388189E08C70089111F /* Images.xcassets in Resources */,
+				A5B8573518C0C81E0039DD0F /* nyt_2014-02-28.json in Resources */,
 				A5A93E8C18A51C920083CF15 /* crossword2.json in Resources */,
 				A513019018A7ED4D008228D5 /* azed_2170.json in Resources */,
 				A5E43B3318AE6798005075B3 /* nyt3.json in Resources */,
@@ -431,6 +438,7 @@
 				A583103B18ABD19400D143F2 /* nyt1.json in Resources */,
 				A5A93E8B18A51C920083CF15 /* crossword1.json in Resources */,
 				A573D03518BC339400430200 /* nyt_2014-02-24.json in Resources */,
+				A579BAA118BFAB4F008F7A3B /* nyt_2014-02-27.json in Resources */,
 				A50A7380189E08C70089111F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
