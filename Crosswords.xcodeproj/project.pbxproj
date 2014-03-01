@@ -51,6 +51,7 @@
 		A5A93EDE18A537DB0083CF15 /* CluesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A93EDD18A537DB0083CF15 /* CluesViewController.m */; };
 		A5A93EE318A56CB00083CF15 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5A93EE218A56CB00083CF15 /* Localizable.strings */; };
 		A5B8573518C0C81E0039DD0F /* nyt_2014-02-28.json in Resources */ = {isa = PBXBuildFile; fileRef = A5B8573418C0C81E0039DD0F /* nyt_2014-02-28.json */; };
+		A5B8573718C252790039DD0F /* nyt_2014-03-01.json in Resources */ = {isa = PBXBuildFile; fileRef = A5B8573618C252790039DD0F /* nyt_2014-03-01.json */; };
 		A5E43B3318AE6798005075B3 /* nyt3.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B3218AE6798005075B3 /* nyt3.json */; };
 		A5E43B3918AE8904005075B3 /* cryptic26179.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B3718AE8904005075B3 /* cryptic26179.json */; };
 		A5E43B3A18AE8904005075B3 /* cryptic26171.json in Resources */ = {isa = PBXBuildFile; fileRef = A5E43B3818AE8904005075B3 /* cryptic26171.json */; };
@@ -137,6 +138,7 @@
 		A5A93EDD18A537DB0083CF15 /* CluesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CluesViewController.m; sourceTree = "<group>"; };
 		A5A93EE218A56CB00083CF15 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A5B8573418C0C81E0039DD0F /* nyt_2014-02-28.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-02-28.json"; sourceTree = "<group>"; };
+		A5B8573618C252790039DD0F /* nyt_2014-03-01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-03-01.json"; sourceTree = "<group>"; };
 		A5E43B3218AE6798005075B3 /* nyt3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt3.json; sourceTree = "<group>"; };
 		A5E43B3718AE8904005075B3 /* cryptic26179.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cryptic26179.json; sourceTree = "<group>"; };
 		A5E43B3818AE8904005075B3 /* cryptic26171.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cryptic26171.json; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				A579BA9718BEBD25008F7A3B /* nyt_2014-02-26.json */,
 				A579BAA018BFAB4F008F7A3B /* nyt_2014-02-27.json */,
 				A5B8573418C0C81E0039DD0F /* nyt_2014-02-28.json */,
+				A5B8573618C252790039DD0F /* nyt_2014-03-01.json */,
 				A5E43B3718AE8904005075B3 /* cryptic26179.json */,
 				A5E43B3818AE8904005075B3 /* cryptic26171.json */,
 			);
@@ -412,6 +415,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B8573718C252790039DD0F /* nyt_2014-03-01.json in Resources */,
 				A50CBE5718B2B65C0000505E /* nyt6.json in Resources */,
 				A50A7388189E08C70089111F /* Images.xcassets in Resources */,
 				A5B8573518C0C81E0039DD0F /* nyt_2014-02-28.json in Resources */,
