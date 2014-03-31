@@ -8,6 +8,8 @@
 
 #import "CluesViewController.h"
 #import "GridView.h"
+#import "ClueView.h"
+
 
 NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewControllerSelectedClueChangedNotification";
 
@@ -34,6 +36,15 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
     }
 }
 
+- (void)_clueViewSelectionChanged:(NSNotification*) notification {
+    GridView* gridView = notification.object;
+    PuzzleClue* clue = notification.userInfo[@"clue"];
+    
+    if (gridView.puzzle == self.puzzle) {
+        self.selectedClue = clue;
+    }
+}
+
 - (id)initWithStyle:(UITableViewStyle)style {
     if ((self = [super initWithStyle:style])) {
         // Custom initialization
@@ -51,6 +62,10 @@ NSString* DetailViewControllerSelectedClueChangedNotification = @"DetailViewCont
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_gridViewSelectionChanged:)
                                                  name:GridViewSelectedClueChangedNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(_clueViewSelectionChanged:)
+                                                 name:ClueViewSelectedClueChangedNotification
                                                object:nil];
     self.clearsSelectionOnViewWillAppear = NO;
 }

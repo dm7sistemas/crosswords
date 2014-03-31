@@ -19,6 +19,7 @@
 
 NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChangedNotification";
 
+
 @interface GridView ()
 
 @end
@@ -29,15 +30,8 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
 @synthesize puzzle = mPuzzle;
 @synthesize selectedClue = mSelectedClue;
 @synthesize showAnswers = mShowAnswers;
-
--(void)_cluesTableSelectionChanged:(NSNotification*) notification {
-    CluesViewController* cluesViewController = notification.object;
-    PuzzleClue* clue = notification.userInfo[@"clue"];
-
-    if (cluesViewController.puzzle == self.puzzle) {
-        self.selectedClue = clue;
-    }
-}
+@synthesize showClueDirections = mShowClueDirections;
+@synthesize showCluesInGrid = mShowCluesInGrid;
 
 -(void)_getRow:(NSInteger*) row andColumn:(NSInteger*) column at:(CGPoint) where {
     NSParameterAssert(row);
@@ -85,13 +79,10 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
 
 -(void)awakeFromNib {
     self.showAnswers = NO;
+    self.showClueDirections = YES;
+    self.showCluesInGrid = NO;
     UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_handleSingleTap:)];
     [self addGestureRecognizer:tapRecognizer];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(_cluesTableSelectionChanged:)
-                                                 name:DetailViewControllerSelectedClueChangedNotification
-                                               object:nil];
 }
 
 - (BOOL)_row:(NSInteger) row column:(NSInteger) column inRectanges:(NSArray*) rects { // arrage of NSValues containing CGRects
@@ -133,7 +124,7 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
                                                             object:self
                                                           userInfo:selectedClue ? @{@"clue": selectedClue} : nil];
 
-        if (selectedClue) {
+        if (selectedClue && self.showCluesInGrid) {
             CGRect frame = self.frame;
             CGFloat width = floor(CGRectGetWidth(frame));
             CGFloat height = floor(CGRectGetHeight(frame));
@@ -253,6 +244,20 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
     }
 }
 
+- (void)setShowClueDirections:(BOOL)showClueDirections {
+    if (self.showClueDirections != showClueDirections) {
+        mShowClueDirections = showClueDirections;
+        [self setNeedsDisplay];
+    }
+}
+
+- (void)setShowCluesInGrid:(BOOL)showCluesInGrid {
+    if (self.showCluesInGrid != showCluesInGrid) {
+        mShowCluesInGrid = showCluesInGrid;
+        [self setNeedsDisplay];
+    }
+}
+
 - (void)drawRect:(CGRect)rect {
 #warning TODO
     //  Some "trick" puzzles have grid cells with multi-letter values.  This code does not yet handle this
@@ -357,8 +362,8 @@ NSString* GridViewSelectedClueChangedNotification = @"GridViewSelectedClueChange
             
             [context show:[NSString stringWithFormat:@"%d%@",
                            (int) num,
-                           across ? [NSString stringWithFormat:@"%C", (UniChar)0x2192] : @""]];
-            if (down) {
+                           across && self.showClueDirections ? [NSString stringWithFormat:@"%C", (UniChar)0x2192] : @""]];
+            if (down && self.showClueDirections) {
                 [context setTextPosition:NSMakePoint(cellsLeft + col * cellSize + 1.0,
                                                      cellsTop + cellsHeight - (row * cellSize + 9.0 + 10.0))];
                 

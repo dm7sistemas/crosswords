@@ -40,6 +40,8 @@
 		A52C1D2518D7589A00010B07 /* nyt_2014-03-17.json in Resources */ = {isa = PBXBuildFile; fileRef = A52C1D2418D7589A00010B07 /* nyt_2014-03-17.json */; };
 		A52C1D2818D758AC00010B07 /* nyt_2014-03-15.json in Resources */ = {isa = PBXBuildFile; fileRef = A52C1D2618D758AC00010B07 /* nyt_2014-03-15.json */; };
 		A52C1D2918D758AC00010B07 /* nyt_2014-03-16.json in Resources */ = {isa = PBXBuildFile; fileRef = A52C1D2718D758AC00010B07 /* nyt_2014-03-16.json */; };
+		A52FB65418E8DBF800D440FC /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52FB65318E8DBF800D440FC /* OptionsViewController.m */; };
+		A52FB65718E8EB0800D440FC /* ClueView.m in Sources */ = {isa = PBXBuildFile; fileRef = A52FB65618E8EB0800D440FC /* ClueView.m */; };
 		A532063818C675BD0061AA06 /* nyt_2014-03-04.json in Resources */ = {isa = PBXBuildFile; fileRef = A532063618C675BD0061AA06 /* nyt_2014-03-04.json */; };
 		A532063918C675BD0061AA06 /* nyt_2014-03-03.json in Resources */ = {isa = PBXBuildFile; fileRef = A532063718C675BD0061AA06 /* nyt_2014-03-03.json */; };
 		A544B7C918B3AE1A00AAAD55 /* nyt7.json in Resources */ = {isa = PBXBuildFile; fileRef = A544B7C818B3AE1A00AAAD55 /* nyt7.json */; };
@@ -131,6 +133,10 @@
 		A52C1D2418D7589A00010B07 /* nyt_2014-03-17.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-03-17.json"; sourceTree = "<group>"; };
 		A52C1D2618D758AC00010B07 /* nyt_2014-03-15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-03-15.json"; sourceTree = "<group>"; };
 		A52C1D2718D758AC00010B07 /* nyt_2014-03-16.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-03-16.json"; sourceTree = "<group>"; };
+		A52FB65218E8DBF800D440FC /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
+		A52FB65318E8DBF800D440FC /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
+		A52FB65518E8EB0800D440FC /* ClueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClueView.h; sourceTree = "<group>"; };
+		A52FB65618E8EB0800D440FC /* ClueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClueView.m; sourceTree = "<group>"; };
 		A532063618C675BD0061AA06 /* nyt_2014-03-04.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-03-04.json"; sourceTree = "<group>"; };
 		A532063718C675BD0061AA06 /* nyt_2014-03-03.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-03-03.json"; sourceTree = "<group>"; };
 		A544B7C818B3AE1A00AAAD55 /* nyt7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nyt7.json; sourceTree = "<group>"; };
@@ -258,8 +264,12 @@
 				A5A93EDD18A537DB0083CF15 /* CluesViewController.m */,
 				A50A7384189E08C70089111F /* DetailViewController.h */,
 				A50A7385189E08C70089111F /* DetailViewController.m */,
+				A52FB65218E8DBF800D440FC /* OptionsViewController.h */,
+				A52FB65318E8DBF800D440FC /* OptionsViewController.m */,
 				A56CAB7718A4121200E66E4D /* GridView.h */,
 				A56CAB7818A4121200E66E4D /* GridView.m */,
+				A52FB65518E8EB0800D440FC /* ClueView.h */,
+				A52FB65618E8EB0800D440FC /* ClueView.m */,
 				A56CAB7118A3FD9800E66E4D /* Puzzle.h */,
 				A56CAB7218A3FD9800E66E4D /* Puzzle.m */,
 				A583104418AD52C600D143F2 /* PuzzleClue.h */,
@@ -558,7 +568,9 @@
 				A56CAB8F18A4635000E66E4D /* MPWView.m in Sources */,
 				A56CAB8D18A4635000E66E4D /* MPWAbstractCGContext.m in Sources */,
 				A583104118ABDBDE00D143F2 /* PopoverView.m in Sources */,
+				A52FB65718E8EB0800D440FC /* ClueView.m in Sources */,
 				A56CAB8E18A4635000E66E4D /* MPWCGDrawingContext.m in Sources */,
+				A52FB65418E8DBF800D440FC /* OptionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

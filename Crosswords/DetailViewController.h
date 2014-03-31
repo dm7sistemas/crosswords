@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Puzzle.h"
 #import "GridView.h"
+#import "ClueView.h"
 
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
@@ -18,9 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *authorView;
 @property (weak, nonatomic) IBOutlet UILabel *copyrightView;
 @property (weak, nonatomic) IBOutlet UILabel *notesView;
-@property (weak, nonatomic) IBOutlet UISwitch *showAnswersView;
 @property (weak, nonatomic) IBOutlet GridView *gridView;
+@property (weak, nonatomic) IBOutlet ClueView *clueView;
 
-- (IBAction)toggleShowAnswers:(id)sender;
+@property (assign, nonatomic) BOOL showInGrid;
 
 @end

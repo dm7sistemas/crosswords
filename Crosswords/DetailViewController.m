@@ -7,13 +7,15 @@
 //
 
 #import "DetailViewController.h"
-#import "GridView.h"
 #import "Puzzle.h"
+#import "CluesViewController.h"
+#import "OptionsViewController.h"
 
 
 @interface DetailViewController ()
 
-@property (strong, nonatomic) UIPopoverController *masterPopoverController;
+@property (strong, nonatomic) UIPopoverController* masterPopoverController;
+@property (strong, nonatomic) UIPopoverController* currentPopoverController;
 
 @end
 
@@ -21,7 +23,21 @@
 
 @synthesize puzzle = mPuzzle;
 
-#pragma mark - Managing the detail item
+-(void)_cluesTableSelectionChanged:(NSNotification*) notification {
+    CluesViewController* cluesViewController = notification.object;
+    PuzzleClue* clue = notification.userInfo[@"clue"];
+    
+    if (cluesViewController.puzzle == self.puzzle) {
+        self.gridView.selectedClue = self.clueView.selectedClue = clue;
+    }
+}
+
+- (void)_selectedClueChanged:(NSNotification*) notification {
+    PuzzleClue* clue = notification.userInfo[@"clue"];
+
+    self.gridView.selectedClue = clue;
+    self.clueView.selectedClue = clue;
+}
 
 - (void)setPuzzle:(Puzzle*)newPuzzle {
     if (mPuzzle != newPuzzle) {
@@ -34,6 +50,13 @@
     if (self.masterPopoverController != nil) {
         [self.masterPopoverController dismissPopoverAnimated:YES];
     }        
+}
+
+- (void)setShowInGrid:(BOOL)showInGrid {
+    if (self.showInGrid != showInGrid) {
+        _showInGrid = showInGrid;
+        [self configureView];
+    }
 }
 
 - (void)configureView {
@@ -52,7 +75,9 @@
         self.copyrightView.text = copyright.length != 0 ? [NSString stringWithFormat:@"%C %@", (UniChar) 0x00A9 /* Unicode copyright symbol */, copyright] : @"";
         self.notesView.text = self.puzzle.notes;
         self.gridView.puzzle = self.puzzle;
-        self.showAnswersView.hidden = NO;
+        self.clueView.puzzle = self.puzzle;
+        self.gridView.hidden = !self.showInGrid;
+        self.clueView.hidden = self.showInGrid;
         self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"Clues", @"Puzzle Clues");
     }
     else {
@@ -60,25 +85,38 @@
         self.authorView.text = @"";
         self.copyrightView.text = @"";
         self.notesView.text = @"";
-        self.gridView.puzzle = nil;
-        self.showAnswersView.hidden = YES;
+        self.gridView.puzzle = self.clueView.puzzle = nil;
+        self.gridView.hidden = YES;
+        self.clueView.hidden = YES;
         self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"Puzzles", @"Crossword Puzzles");
     }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.showInGrid = NO;
     [self configureView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(_selectedClueChanged:)
+                                                 name:GridViewSelectedClueChangedNotification
+                                               object:self.gridView];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(_selectedClueChanged:)
+                                                 name:ClueViewSelectedClueChangedNotification
+                                               object:self.clueView];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(_cluesTableSelectionChanged:)
+                                                 name:DetailViewControllerSelectedClueChangedNotification
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)toggleShowAnswers:(id)sender {
-    self.gridView.showAnswers = !self.gridView.showAnswers;
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [self.currentPopoverController dismissPopoverAnimated:YES];
 }
 
 #pragma mark - Split view
@@ -94,6 +132,24 @@
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     self.masterPopoverController = nil;
+}
+
+#pragma mark - UIStoryboardDelegate
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [self.currentPopoverController dismissPopoverAnimated:YES];
+
+    UIPopoverController* popoverController = [(UIStoryboardPopoverSegue*)segue popoverController];
+    OptionsViewController* optionsViewController = (OptionsViewController*) segue.destinationViewController;
+    
+    optionsViewController.detailViewController = self;
+    self.currentPopoverController = popoverController;
+}
+
+#pragma mark - UIPopoverControllerDelegate
+
+- (void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    self.currentPopoverController = nil;
 }
 
 @end
