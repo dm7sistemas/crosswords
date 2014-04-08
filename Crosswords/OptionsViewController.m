@@ -69,17 +69,26 @@
 }
 
 - (IBAction)toggleShowAnswers:(id)sender {
-    self.detailViewController.gridView.showAnswers = !self.detailViewController.gridView.showAnswers;
+#warning TODO
+    //  There is too much knowledge of detailViewController's internals here.  This setting should be set on
+    //  the detailViewController and it can do the right thing with the views it controls.
+    self.detailViewController.gridView.showAnswers = self.detailViewController.clueView.showAnswers = !self.detailViewController.gridView.showAnswers;
     [self _configureCells];
 }
 
 - (IBAction)toggleShowCluesInGrid:(id)sender {
-    self.detailViewController.gridView.showCluesInGrid = !self.detailViewController.gridView.showCluesInGrid;
+#warning TODO
+    //  There is too much knowledge of detailViewController's internals here.  This setting should be set on
+    //  the detailViewController and it can do the right thing with the views it controls.
+    self.detailViewController.gridView.showCluesInGrid = self.detailViewController.clueView.showCluesInGrid = !self.detailViewController.gridView.showCluesInGrid;
     [self _configureCells];
 }
 
 - (IBAction)toggleShowClueDirection:(id)sender {
-    self.detailViewController.gridView.showClueDirections = !self.detailViewController.gridView.showClueDirections;
+#warning TODO
+    //  There is too much knowledge of detailViewController's internals here.  This setting should be set on
+    //  the detailViewController and it can do the right thing with the views it controls.
+    self.detailViewController.gridView.showClueDirections = self.detailViewController.clueView.showClueDirections = !self.detailViewController.gridView.showClueDirections;
     [self _configureCells];
 }
 

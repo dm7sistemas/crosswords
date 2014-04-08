@@ -19,6 +19,7 @@ extern NSString* ClueViewSelectedClueChangedNotification;
 @property (strong, nonatomic) Puzzle* puzzle;
 @property (strong, nonatomic) PuzzleClue* selectedClue;
 @property (nonatomic) BOOL showAnswers;
+@property (nonatomic) BOOL showClueDirections;
 @property (nonatomic) BOOL showCluesInGrid;
 
 @end
