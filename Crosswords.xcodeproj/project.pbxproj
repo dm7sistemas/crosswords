@@ -70,6 +70,9 @@
 		A5A93E8F18A51C920083CF15 /* crossword5.json in Resources */ = {isa = PBXBuildFile; fileRef = A5A93E8A18A51C920083CF15 /* crossword5.json */; };
 		A5A93EDE18A537DB0083CF15 /* CluesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A93EDD18A537DB0083CF15 /* CluesViewController.m */; };
 		A5A93EE318A56CB00083CF15 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5A93EE218A56CB00083CF15 /* Localizable.strings */; };
+		A5AEB85418F9F12700889FB7 /* nyt_2014-04-08.json in Resources */ = {isa = PBXBuildFile; fileRef = A5AEB85118F9F12700889FB7 /* nyt_2014-04-08.json */; };
+		A5AEB85518F9F12700889FB7 /* nyt_2014-04-09.json in Resources */ = {isa = PBXBuildFile; fileRef = A5AEB85218F9F12700889FB7 /* nyt_2014-04-09.json */; };
+		A5AEB85618F9F12700889FB7 /* nyt_2014-04-12.json in Resources */ = {isa = PBXBuildFile; fileRef = A5AEB85318F9F12700889FB7 /* nyt_2014-04-12.json */; };
 		A5B8573518C0C81E0039DD0F /* nyt_2014-02-28.json in Resources */ = {isa = PBXBuildFile; fileRef = A5B8573418C0C81E0039DD0F /* nyt_2014-02-28.json */; };
 		A5B8573718C252790039DD0F /* nyt_2014-03-01.json in Resources */ = {isa = PBXBuildFile; fileRef = A5B8573618C252790039DD0F /* nyt_2014-03-01.json */; };
 		A5BCE34E18F38EE400F1E45B /* nyt_2014-04-03.json in Resources */ = {isa = PBXBuildFile; fileRef = A5BCE34918F38EE400F1E45B /* nyt_2014-04-03.json */; };
@@ -189,6 +192,9 @@
 		A5A93EDC18A537DB0083CF15 /* CluesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CluesViewController.h; sourceTree = "<group>"; };
 		A5A93EDD18A537DB0083CF15 /* CluesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CluesViewController.m; sourceTree = "<group>"; };
 		A5A93EE218A56CB00083CF15 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		A5AEB85118F9F12700889FB7 /* nyt_2014-04-08.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-04-08.json"; sourceTree = "<group>"; };
+		A5AEB85218F9F12700889FB7 /* nyt_2014-04-09.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-04-09.json"; sourceTree = "<group>"; };
+		A5AEB85318F9F12700889FB7 /* nyt_2014-04-12.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-04-12.json"; sourceTree = "<group>"; };
 		A5B8573418C0C81E0039DD0F /* nyt_2014-02-28.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-02-28.json"; sourceTree = "<group>"; };
 		A5B8573618C252790039DD0F /* nyt_2014-03-01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-03-01.json"; sourceTree = "<group>"; };
 		A5BCE34918F38EE400F1E45B /* nyt_2014-04-03.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "nyt_2014-04-03.json"; sourceTree = "<group>"; };
@@ -427,6 +433,9 @@
 				A5BCE34B18F38EE400F1E45B /* nyt_2014-04-05.json */,
 				A5BCE34C18F38EE400F1E45B /* nyt_2014-04-06.json */,
 				A5BCE34D18F38EE400F1E45B /* nyt_2014-04-07.json */,
+				A5AEB85118F9F12700889FB7 /* nyt_2014-04-08.json */,
+				A5AEB85218F9F12700889FB7 /* nyt_2014-04-09.json */,
+				A5AEB85318F9F12700889FB7 /* nyt_2014-04-12.json */,
 				A5E43B3718AE8904005075B3 /* cryptic26179.json */,
 				A5E43B3818AE8904005075B3 /* cryptic26171.json */,
 			);
@@ -515,6 +524,7 @@
 				A52C1D2818D758AC00010B07 /* nyt_2014-03-15.json in Resources */,
 				A50A7388189E08C70089111F /* Images.xcassets in Resources */,
 				A5B8573518C0C81E0039DD0F /* nyt_2014-02-28.json in Resources */,
+				A5AEB85418F9F12700889FB7 /* nyt_2014-04-08.json in Resources */,
 				A5A93E8C18A51C920083CF15 /* crossword2.json in Resources */,
 				A5158FFE18CAFF8200FF6DA5 /* nyt_2014-03-08.json in Resources */,
 				A513019018A7ED4D008228D5 /* azed_2170.json in Resources */,
@@ -540,6 +550,7 @@
 				A5E43B3A18AE8904005075B3 /* cryptic26171.json in Resources */,
 				A52C1D1F18D3726600010B07 /* nyt_2014-03-14.json in Resources */,
 				A5FA3E9E18EA73900098BF52 /* nyt_2014-03-31.json in Resources */,
+				A5AEB85518F9F12700889FB7 /* nyt_2014-04-09.json in Resources */,
 				A5A93E8E18A51C920083CF15 /* crossword4.json in Resources */,
 				A5FA906E18DCA16D00A441D0 /* nyt_2014-03-20.json in Resources */,
 				A524422218E72C10001C3449 /* nyt_2014-03-28.json in Resources */,
@@ -556,6 +567,7 @@
 				A5BCE34E18F38EE400F1E45B /* nyt_2014-04-03.json in Resources */,
 				A5BCE35218F38EE400F1E45B /* nyt_2014-04-07.json in Resources */,
 				A52C1D1D18D3726600010B07 /* nyt_2014-03-10.json in Resources */,
+				A5AEB85618F9F12700889FB7 /* nyt_2014-04-12.json in Resources */,
 				A524421F18E72C10001C3449 /* nyt_2014-03-24.json in Resources */,
 				A5A93E8B18A51C920083CF15 /* crossword1.json in Resources */,
 				A52C1D2518D7589A00010B07 /* nyt_2014-03-17.json in Resources */,
