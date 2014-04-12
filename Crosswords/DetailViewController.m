@@ -10,6 +10,7 @@
 #import "Puzzle.h"
 #import "CluesViewController.h"
 #import "OptionsViewController.h"
+#import "GTMNSString+HTML.h"
 
 
 @interface DetailViewController ()
@@ -73,7 +74,7 @@
         self.navigationItem.title = self.puzzle.title;
         self.authorView.text = editor.length != 0 ? [NSString stringWithFormat:@"%@ (Editor: %@)", author, editor] : author;
         self.copyrightView.text = copyright.length != 0 ? [NSString stringWithFormat:@"%C %@", (UniChar) 0x00A9 /* Unicode copyright symbol */, copyright] : @"";
-        self.notesView.text = self.puzzle.notes;
+        self.notesView.text = self.puzzle.notes.gtm_stringByUnescapingFromHTML;
         self.gridView.puzzle = self.puzzle;
         self.clueView.puzzle = self.puzzle;
         self.gridView.hidden = !self.showInGrid;
