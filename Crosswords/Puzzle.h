@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) NSUInteger rows;
 @property (readonly, nonatomic) NSUInteger columns;
 @property (readonly, nonatomic) NSArray* playerGrid;
+@property (copy, nonatomic) NSDictionary* puzzleData;
 
 - (instancetype)initWithPuzzle:(NSDictionary*)puzzle filename:(NSString*) filename;
 

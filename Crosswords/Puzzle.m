@@ -33,6 +33,14 @@
 @synthesize copyright = mCopyright;
 @synthesize notes = mNotes;
 @synthesize playerGrid = mPlayerGrid;
+@synthesize puzzleData = mPuzzleData;
+
+- (NSString*)_localDataPath {
+    NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *dataPath = [documentsPath stringByAppendingPathComponent:[[self.filename stringByDeletingPathExtension] stringByAppendingPathExtension:@"plist"]];
+    
+    return dataPath;
+}
 
 - (instancetype)initWithPuzzle:(NSDictionary *)puzzle filename:(NSString*) filename {
     //  We need a unique ID for the puzzle.  The contents of the puzzle don't guarentee this, so I'm using the file name.  This will
@@ -322,6 +330,24 @@
                                  // array.
     }
     return mPlayerGrid;
+}
+
+- (NSDictionary*)puzzleData {
+    if (!mPuzzleData) {
+        NSString* dataPath = [self _localDataPath];
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:dataPath])
+            mPuzzleData = [NSDictionary dictionaryWithContentsOfFile:dataPath];
+        else
+            mPuzzleData = @{};
+    }
+    
+    return mPuzzleData;
+}
+
+- (void)setPuzzleData:(NSDictionary *)puzzleData {
+    mPuzzleData = [puzzleData copy];
+    [mPuzzleData writeToFile:[self _localDataPath] atomically:YES];
 }
 
 @end
